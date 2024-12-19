@@ -1,0 +1,88 @@
+:root {
+    --narrow-side-panel-width: 100px;
+    --wide-side-panel-width: 200px;
+    --icon-width: 50px;
+  }
+  
+  .container {
+    text-align: left;
+    display: grid;
+    height: 100vh;
+    --row-1: 5rem;
+    --row-2: 1fr;
+    --column-1: var(--narrow-side-panel-width);
+    --column-2: 1fr;
+    --column-3: 200px;
+  
+    grid-template: 
+      var(--row-1) var(--row-2)
+       / var(--column-1) var(--column-2) var(--column-3);
+  
+    grid-template-areas: 
+      "hhh hhh hhh"
+      "sss aaa rrr"
+    ;
+  }
+  
+  .container .sidebar {
+    background-color: white;
+    grid-area: sss;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  
+  .sidebar > .toggle-container {
+    width: 20px;           
+    min-width: 20px;
+    height: 100%;          
+    background-color: rgb(255, 255, 255); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .toggle-container > .red-square {
+    width: 15px;           
+    height: 15px;          
+    background-color: red; 
+  }
+  
+  .sidebar > .menu {
+    height: 100%;          
+    background-color: grey;
+    flex-grow:1;
+    overflow: hidden;
+  }
+  .menu > .menu-item {
+    white-space: nowrap;
+    text-align: left; /* Align the content to the left */
+    display: flex;
+    align-items: center; /* Align items like the circle and text vertically */
+  }
+  
+  .menu-item > svg {
+    width: var(--icon-width); /* Set a fixed width for the SVG */
+    height: auto; /* Set a fixed height for the SVG */
+    margin: 8px; /* Space between SVG and text */
+    flex-shrink: 0; /* Prevent the SVG from shrinking */
+  }
+  
+  .container .right {
+    background-color: #393f4d;
+    grid-area: rrr;
+  }
+  
+  .container .header {
+    background-color: #393f4d;
+    grid-area: hhh;
+  }
+  
+  .center-section {
+    background-color: #bccbde;
+    grid-area: aaa;
+  }
+  
+  
+  .show { --column-1: var(--wide-side-panel-width); }
+  .expand { width: var(--wide-side-panel-width);}
+  .rotate { transform: rotate(180deg); transition: .5s; }
