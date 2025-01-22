@@ -46,4 +46,13 @@
     isolation: isolate;
   }
 
-  
+  input {
+    /* all: unset; */
+    /* box-sizing: border-box; /* Ensures padding and border are included in the width/height calculation */
+    /* display: inline-block; Ensures the input behaves like a typical inline element */
+    width: 100%; /* Make the input element fill its container */
+    /* padding: 0; */
+    margin: 0;
+    border: none;
+    outline: none; 
+  }

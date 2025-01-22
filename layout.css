@@ -2,87 +2,238 @@
     --narrow-side-panel-width: 100px;
     --wide-side-panel-width: 200px;
     --icon-width: 50px;
+    --standard-line-weight: 1.5px;
+
+    font-family: comfortaa;
   }
   
-  .container {
-    text-align: left;
-    display: grid;
-    height: 100vh;
-    --row-1: 5rem;
-    --row-2: 1fr;
-    --column-1: var(--narrow-side-panel-width);
-    --column-2: 1fr;
-    --column-3: 200px;
+.container {
+  text-align: left;
+  display: grid;
+  height: 100vh;
+  --row-1: 81px;
+  --row-2: 1fr;
+  --column-1: var(--narrow-side-panel-width);
+  --column-2: 1fr;
+  --column-3: 200px;
+
+  grid-template: 
+    var(--row-1) var(--row-2)
+      / var(--column-1) var(--column-2) var(--column-3);
+
+  grid-template-areas: 
+    "hhh hhh hhh"
+    "sss aaa rrr"
+  ;
+}
+
+.container .sidebar {
+  background-color: white;
+  grid-area: sss;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.sidebar > .toggle-container {
+  width: 20px;           
+  min-width: 20px;
+  height: 100%;          
+  background-color: rgb(255, 255, 255); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.toggle-container > .red-square {
+  width: 15px;           
+  height: 15px;          
+  background-color: red; 
+}
+
+.sidebar > .menu {
+  height: 100%;          
+  background-color: grey;
+  flex-grow:1;
+  overflow: hidden;
+}
+.menu > .menu-item {
+  white-space: nowrap;
+  text-align: left; /* Align the content to the left */
+  display: flex;
+  align-items: center; /* Align items like the circle and text vertically */
+}
+
+.menu-item > svg {
+  width: var(--icon-width); /* Set a fixed width for the SVG */
+  height: auto; /* Set a fixed height for the SVG */
+  margin: 8px; /* Space between SVG and text */
+  flex-shrink: 0; /* Prevent the SVG from shrinking */
+}
+
+.container .right {
+  background-color: #393f4d;
+  grid-area: rrr;
+}
+
+.container .header {
+  background-color: white;
+  grid-area: hhh;
+  display: grid;
+  grid-template-columns: 245px 1fr 276px;
+}
+
+.container .header #head-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 19px;
+  padding-left: 20px;
+}
+
+
+.container .header #head-logo svg {
+  margin-right: 20px;
+}
+
+.container .header #dashboard {
+  font-size: 27.65px;
+  font-weight: bold;
+  padding-top: 2px;
   
-    grid-template: 
-      var(--row-1) var(--row-2)
-       / var(--column-1) var(--column-2) var(--column-3);
-  
-    grid-template-areas: 
-      "hhh hhh hhh"
-      "sss aaa rrr"
-    ;
-  }
-  
-  .container .sidebar {
-    background-color: white;
-    grid-area: sss;
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  
-  .sidebar > .toggle-container {
-    width: 20px;           
-    min-width: 20px;
-    height: 100%;          
-    background-color: rgb(255, 255, 255); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .toggle-container > .red-square {
-    width: 15px;           
-    height: 15px;          
-    background-color: red; 
-  }
-  
-  .sidebar > .menu {
-    height: 100%;          
-    background-color: grey;
-    flex-grow:1;
-    overflow: hidden;
-  }
-  .menu > .menu-item {
-    white-space: nowrap;
-    text-align: left; /* Align the content to the left */
-    display: flex;
-    align-items: center; /* Align items like the circle and text vertically */
-  }
-  
-  .menu-item > svg {
-    width: var(--icon-width); /* Set a fixed width for the SVG */
-    height: auto; /* Set a fixed height for the SVG */
-    margin: 8px; /* Space between SVG and text */
-    flex-shrink: 0; /* Prevent the SVG from shrinking */
-  }
-  
-  .container .right {
-    background-color: #393f4d;
-    grid-area: rrr;
-  }
-  
-  .container .header {
-    background-color: #393f4d;
-    grid-area: hhh;
-  }
-  
-  .center-section {
-    background-color: #bccbde;
-    grid-area: aaa;
-  }
-  
-  
-  .show { --column-1: var(--wide-side-panel-width); }
-  .expand { width: var(--wide-side-panel-width);}
-  .rotate { transform: rotate(180deg); transition: .5s; }
+}
+
+.container .header #search {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container .header #search * {
+  flex-grow: 0;
+  align-items: center;
+}
+
+.search-wrapper {
+  padding-top: 27px;
+}
+
+.search-container {
+  position: relative;
+  width: auto;
+  display: flex;         /* Arrange the items horizontally */
+  align-items: center;   /* Vertically center the items */
+  gap: 20px;
+  padding-left: 50px;
+}
+.svg-one {
+position: absolute;
+top: 0px;
+left: 0;
+opacity: 1;
+height: 34px;
+width: auto;
+display: flex;
+
+}
+
+/* Default: Hide second SVG */
+.svg-two {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0;
+  transform: translateY(0);
+  z-index: 2;
+  height: 34px;
+  width: auto;
+  transform-origin: 0% 0%;
+}
+.search-input {
+  width: 340px;
+  height: 34px;
+  padding: 10.5px 5px 9.5px 15px; /* Padding inside the input (5px and 10px equivalent in rem) */
+  font-size: 1rem;        /* Set the font size to 16px using rem (comfortable with the root font size) */
+  border: var(--standard-line-weight) solid black; /* Border around the input */
+  border-radius: 1.25rem; /* Rounded corners for the input (20px equivalent in rem) */
+  font-family: 'Comfortaa', sans-serif; /* Change the font of the input field */
+  box-sizing: border-box;
+  outline: 0px solid #FFD30F;
+  transition: outline 0.1s ease-in-out;
+}
+.clear-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  padding: 0;
+}
+.clear-button-svg {
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  border-radius: 0%;
+}
+.search-input:focus {
+outline: 3px solid #FFD30F;
+transition: outline 0.1s ease-in-out;
+border: transparent;
+}
+
+.search-container .svg-one:has(+ * + *:focus) {
+opacity: 0;
+}
+.search-container .svg-two:has(+ *:focus) {
+opacity: 1;
+animation: rotateMag 0.8s cubic-bezier(0.83,-0.5, 0.2, 1.5) 0.1s;: 
+}
+
+
+@keyframes rotateMag {
+0% {
+transform: rotate(0deg); /* Start at 0 degrees */
+}
+100% {
+transform: rotate(720deg); /* Rotate 360 degrees */
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container .header #notif {
+  background-color: green;
+}
+
+.center-section {
+  background-color: hwb(214 74% 13%);
+  grid-area: aaa;
+}
+
+
+.show { --column-1: var(--wide-side-panel-width); }
+.expand { width: var(--wide-side-panel-width);}
+.rotate { transform: rotate(180deg); transition: .5s; }
