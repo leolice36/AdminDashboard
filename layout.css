@@ -2,16 +2,20 @@
     --narrow-side-panel-width: 100px;
     --wide-side-panel-width: 200px;
     --icon-width: 50px;
-    --standard-line-weight: 1.5px;
-
+    --standard-line-weight: 2px;
+    --standard-gap: 20px;
+    --blackish: #000000;
     font-family: comfortaa;
+    --font-h4: 27.65px;
+    --font-smaller: 13.33px;
+
   }
   
 .container {
   text-align: left;
   display: grid;
   height: 100vh;
-  --row-1: 81px;
+  --row-1: 71px;
   --row-2: 1fr;
   --column-1: var(--narrow-side-panel-width);
   --column-2: 1fr;
@@ -80,43 +84,52 @@
   grid-area: hhh;
   display: grid;
   grid-template-columns: 245px 1fr 276px;
+  --row-1: 1fr;
+  --row-2: var(--standard-line-weight);
+  --column-1: 245px;
+  --column-2: 1fr;
+  --column-3: 276px;
+
+  grid-template: 
+    var(--row-1) var(--row-2)
+      / var(--column-1) var(--column-2) var(--column-3);
+
+  grid-template-areas: 
+    "hlo se no"
+    "hli hli hli"
+  ;
 }
 
 .container .header #head-logo {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  padding-top: 19px;
+  padding-top: 14px;
   padding-left: 20px;
+  grid-area: hlo;
 }
-
-
 .container .header #head-logo svg {
   margin-right: 20px;
 }
-
 .container .header #dashboard {
-  font-size: 27.65px;
+  font-size: var(--font-h4);
   font-weight: bold;
   padding-top: 2px;
-  
+  color: var(--blackish);
 }
-
 .container .header #search {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  grid-area: se;
 }
-
 .container .header #search * {
   flex-grow: 0;
   align-items: center;
 }
-
 .search-wrapper {
-  padding-top: 27px;
+  padding-top: 18px;
 }
-
 .search-container {
   position: relative;
   width: auto;
@@ -125,7 +138,6 @@
   gap: 20px;
   padding-left: 50px;
 }
-
 .svg-one {
 position: absolute;
 top: 0px;
@@ -135,7 +147,6 @@ height: 34px;
 width: auto;
 display: flex;
 }
-
 /* Default: Hide second SVG */
 .svg-two {
   position: absolute;
@@ -153,7 +164,7 @@ display: flex;
   height: 34px;
   padding: 10.5px 5px 9.5px 15px; /* Padding inside the input (5px and 10px equivalent in rem) */
   font-size: 1rem;        /* Set the font size to 16px using rem (comfortable with the root font size) */
-  border: var(--standard-line-weight) solid black; /* Border around the input */
+  border: var(--standard-line-weight) solid var(--blackish); /* Border around the input */
   border-radius: 1.25rem; /* Rounded corners for the input (20px equivalent in rem) */
   font-family: 'Comfortaa', sans-serif; /* Change the font of the input field */
   box-sizing: border-box;
@@ -182,16 +193,13 @@ outline: 3px solid #FFD30F;
 transition: outline 0.1s ease-in-out;
 border: transparent;
 }
-
 .search-container .svg-one:has(+ * + *:focus) {
 opacity: 0;
 }
 .search-container .svg-two:has(+ *:focus) {
 opacity: 1;
-animation: rotateMag 0.8s cubic-bezier(0.83,-0.5, 0.2, 1.5) 0.1s;: 
+animation: rotateMag 0.8s cubic-bezier(0.83,-0.5, 0.2, 1.5) 0.1s;
 }
-
-
 @keyframes rotateMag {
 0% {
 transform: rotate(0deg); /* Start at 0 degrees */
@@ -204,28 +212,38 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .container .header #notif {
-  background-color: green;
+  grid-area: no;
+  display: flex;
+  height: 52px;
+  padding-top: 18px;
+  gap: 0px 20px;
+  
+}
+
+.container .header #notif-divider {
+  background-color: var(--blackish);
+  height: auto;
+  width: var(--standard-line-weight);
+}
+
+.container .header #profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.container .header #user-name-display {
+  font-size: var(--font-smaller);
+  font-weight: bold;
+}
+
+.container .header #headline {
+  background-color: var(--blackish); /* Color of the line */
+  border-radius: 5px; /* Half of the height for perfect round ends */
+  grid-area: hli;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .center-section {
