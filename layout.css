@@ -125,6 +125,7 @@
   gap: 20px;
   padding-left: 50px;
 }
+
 .svg-one {
 position: absolute;
 top: 0px;
@@ -133,7 +134,6 @@ opacity: 1;
 height: 34px;
 width: auto;
 display: flex;
-
 }
 
 /* Default: Hide second SVG */
