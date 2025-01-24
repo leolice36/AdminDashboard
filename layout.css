@@ -1,7 +1,7 @@
 :root {
-    --narrow-side-panel-width: 100px;
-    --wide-side-panel-width: 200px;
-    --icon-width: 50px;
+    --narrow-side-panel-width: 78px;
+    --wide-side-panel-width: 226px;
+    --icon-width: 24px;
     --standard-line-weight: 2px;
     --standard-gap: 20px;
     --blackish: #000000;
@@ -40,37 +40,88 @@
 
 
 .sidebar > .toggle-container {
-  width: 20px;           
-  min-width: 20px;
+  width: 26px;           
+  min-width: 26px;
   height: 100%;          
-  background-color: rgb(255, 255, 255); 
+  background-color: rgba(255, 255, 255, 0); 
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.toggle-container > .red-square {
-  width: 15px;           
-  height: 15px;          
-  background-color: red; 
+  flex-direction: column;
 }
 
 .sidebar > .menu {
   height: 100%;          
-  background-color: grey;
+  background-color: white;
   flex-grow:1;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-.menu > .menu-item {
+.menu .menu-item {
   white-space: nowrap;
   text-align: left; /* Align the content to the left */
   display: flex;
   align-items: center; /* Align items like the circle and text vertically */
+  height: 36px;
+  gap: 20px;
+  padding-left: 0px;
+  font-size: var(--font-smaller);
+}
+.expand .menu .menu-item{
+  padding-left: 20px;
+}
+.menu .top-menu,.bottom-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 40px;
+  padding-left: 20px;
+  padding-bottom: 40px;
+
+}
+.horizontal-divider, .vertical-divider{
+  background-color: var(--blackish);
+  border-radius: 20px;
+}
+.horizontal-divider{
+  height: var(--standard-line-weight);
+  width: auto;
+}
+.vertical-divider {
+  height: auto;
+  width: var(--standard-line-weight);
 }
 
-.menu-item > svg {
+.toggle-container .vertical-divider {
+  flex: 1;
+}
+
+.toggle-container .tog-div-top {
+  margin-top: var(--standard-gap);
+  margin-bottom: 5px;
+}
+.toggle-container .tog-div-bot {
+  margin-top: 5px;
+  margin-bottom: var(--standard-gap);
+}
+
+.menu .top-menu #menu-divider{
+  white-space: nowrap;
+  display: flex;
+  align-items: center; /* Align items like the circle and text vertically */
+  margin-right: 9px; 
+}
+
+.expand .menu .menu-item{
+  padding-left: 20px;
+}
+
+.menu-item > img {
+  white-space: nowrap;
   width: var(--icon-width); /* Set a fixed width for the SVG */
   height: auto; /* Set a fixed height for the SVG */
-  margin: 8px; /* Space between SVG and text */
   flex-shrink: 0; /* Prevent the SVG from shrinking */
 }
 
@@ -221,11 +272,7 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   
 }
 
-.container .header #notif-divider {
-  background-color: var(--blackish);
-  height: auto;
-  width: var(--standard-line-weight);
-}
+
 
 .container .header #profile {
   display: flex;
@@ -240,14 +287,14 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 
 .container .header #headline {
   background-color: var(--blackish); /* Color of the line */
-  border-radius: 5px; /* Half of the height for perfect round ends */
+  border-radius: 20px; /* Half of the height for perfect round ends */
   grid-area: hli;
   margin-left: 20px;
   margin-right: 20px;
 }
 
 .center-section {
-  background-color: hwb(214 74% 13%);
+  background-color: white;
   grid-area: aaa;
 }
 
