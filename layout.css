@@ -19,7 +19,7 @@
   --row-2: 1fr;
   --column-1: var(--narrow-side-panel-width);
   --column-2: 1fr;
-  --column-3: 200px;
+  --column-3: 344px;
 
   grid-template: 
     var(--row-1) var(--row-2)
@@ -91,7 +91,7 @@
 }
 .vertical-divider {
   height: auto;
-  width: var(--standard-line-weight);
+  min-width: var(--standard-line-weight);
 }
 
 .toggle-container .vertical-divider {
@@ -126,9 +126,11 @@
 }
 
 .container .right {
-  background-color: #393f4d;
+  background-color: white;
   grid-area: rrr;
 }
+
+
 
 .container .header {
   background-color: white;
@@ -296,7 +298,21 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 .center-section {
   background-color: white;
   grid-area: aaa;
+  display: flex;
+  align-items: stretch;
+  align-content: stretch;
 }
+
+.center-section .projects {
+  flex-grow: 1;
+}
+
+.center-section #center-divider {
+  flex-grow: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 
 
 .show { --column-1: var(--wide-side-panel-width); }
