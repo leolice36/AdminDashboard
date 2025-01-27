@@ -8,7 +8,7 @@
     font-family: comfortaa;
     --font-h4: 27.65px;
     --font-smaller: 13.33px;
-
+    --font-smallest: 11.11px;
   }
   
 .container {
@@ -129,7 +129,7 @@
   background-color: white;
   grid-area: rrr;
   display: grid;
-  grid-template-rows: 72px var(--standard-line-weight) 1.2fr var(--standard-line-weight) 1fr;
+  grid-template-rows: 74px var(--standard-line-weight) 1.2fr var(--standard-line-weight) 1fr;
   width: 100%; /* Fixed width for the container */
   height: 100%; /* Fill the height of the parent */
 }
@@ -139,7 +139,23 @@
   margin-right: 20px;
 }
 
+.right .nav-buttons {
+  display: grid;
+  grid-template-columns: 1fr var(--standard-line-weight) 1fr var(--standard-line-weight) 1fr;
+  height: 100%;
+  width: 100%;
+  padding: 20px 25px;
+  font-size: var(--font-smallest);
+  font-weight: bold;
+  padding-right: 30px;
+}
 
+.right .nav-buttons .button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
 
 
 
