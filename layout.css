@@ -128,7 +128,24 @@
 .container .right {
   background-color: white;
   grid-area: rrr;
+  display: grid;
+  grid-template-rows: 72px var(--standard-line-weight) 1.2fr var(--standard-line-weight) 1fr;
+  width: 100%; /* Fixed width for the container */
+  height: 100%; /* Fill the height of the parent */
 }
+
+.right .horizontal-divider {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+
+
+
+
+
+
 
 
 
