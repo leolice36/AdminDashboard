@@ -129,7 +129,7 @@
   background-color: white;
   grid-area: rrr;
   display: grid;
-  grid-template-rows: 74px var(--standard-line-weight) 1.2fr var(--standard-line-weight) 1fr;
+  grid-template-rows: 74px var(--standard-line-weight) 1fr var(--standard-line-weight) 1fr;
   width: 100%; /* Fixed width for the container */
   height: 100%; /* Fill the height of the parent */
 }
@@ -157,20 +157,59 @@
   gap: 8px;
 }
 
-.right .announcements {
+.right .announcements, .right .trending {
   padding: 20px 20px 30px 30px;
+  overflow: hidden;
 }
 
-.announcements .announce-header {
+.announcements .announce-header, .trending .trend-header {
   font-weight: bold;
   min-height: 34px;
   display: flex;
   align-items: center;
 }
 
-.announcements .announce-content {
+.announcements .announce-content, .trending .trend-content {
   padding: 20px 20px 0px 10px;
+  height: 100%;
+
 }
+
+.announce-content .child {
+  width: 100%;
+  border-bottom: var(--standard-line-weight) solid var(--blackish);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 3px;
+  font-size: var(--font-smaller);
+  line-height: 15px;
+}
+
+.content {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  font-size: var(--font-smallest);
+  font-weight: 300;
+  line-height: 22px;
+}
+
+
+.trend-content .trendProfile {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 36px;
+  margin-bottom: 15px;
+  font-size: var(--font-smaller);
+}
+
+
 
 
 
