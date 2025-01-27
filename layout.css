@@ -157,7 +157,20 @@
   gap: 8px;
 }
 
+.right .announcements {
+  padding: 20px 20px 30px 30px;
+}
 
+.announcements .announce-header {
+  font-weight: bold;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+}
+
+.announcements .announce-content {
+  padding: 20px 20px 0px 10px;
+}
 
 
 
