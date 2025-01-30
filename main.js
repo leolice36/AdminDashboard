@@ -227,3 +227,21 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+function toggleDarkMode() {
+  const containerChildren = document.querySelectorAll('.container, input');
+  
+  // Loop through all direct children of .container
+  containerChildren.forEach(child => {
+      child.classList.toggle("dark-mode");
+  });
+  
+  const button = document.getElementById("modeToggle");
+
+  // if (Array.from(containerChildren).some(child => child.classList.contains("dark-mode"))) {
+  //     button.textContent = "Light Mode";
+  // } else {
+  //     button.textContent = "Dark Mode";
+  // }
+}

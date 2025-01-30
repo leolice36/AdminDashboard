@@ -9,8 +9,11 @@
     --font-h4: 27.65px;
     --font-smaller: 13.33px;
     --font-smallest: 11.11px;
+    
   }
-  
+body .container, body .container *{
+  transition: background-color 2s, color 2s;
+}
 .container {
   text-align: left;
   display: grid;
@@ -29,10 +32,11 @@
     "hhh hhh hhh"
     "sss aaa rrr"
   ;
+  
 }
 
 .container .sidebar {
-  background-color: white;
+  background-color: transparent;
   grid-area: sss;
   display: flex;
   justify-content: flex-end;
@@ -52,7 +56,7 @@
 
 .sidebar > .menu {
   height: 100%;          
-  background-color: white;
+  background-color: transparent;
   flex-grow:1;
   overflow: hidden;
   display: flex;
@@ -126,7 +130,7 @@
 }
 
 .container .right {
-  background-color: white;
+  background-color: transparent;
   grid-area: rrr;
   display: grid;
   grid-template-rows: 74px var(--standard-line-weight) 1fr var(--standard-line-weight) 1fr;
@@ -218,7 +222,7 @@
 
 
 .container .header {
-  background-color: white;
+  background-color: transparent;
   grid-area: hhh;
   display: grid;
   grid-template-columns: 245px 1fr 276px;
@@ -359,6 +363,11 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   
 }
 
+.container.dark-mode, input.dark-mode {
+  background-color: black;
+  color: black;
+}
+
 
 
 .container .header #profile {
@@ -381,7 +390,7 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 }
 
 .center-section {
-  background-color: white;
+  background-color: transparent;
   grid-area: aaa;
   display: flex;
   align-items: stretch;
@@ -439,6 +448,18 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   margin-bottom: 20px;
 }
 
+.centered-div {
+  position: fixed;
+  font-size: xx-large;
+  top: 16%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 9999; /* Ensures it's above all other elements */
+  /* text-shadow: 0 0 15px white, 0 0 15px white, 0 0 15px white; */
+}
 
 
 .show { --column-1: var(--wide-side-panel-width); }
