@@ -215,4 +215,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Remove border from the last visible child of the div with id 'parentDiv' after a 2-second delay (2000ms)
   removeBorderFromLastVisibleChild('.announce-content', 250);
   
-  
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchInput = document.querySelector(".search-input");
+
+  searchInput.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" && searchInput.value.trim() !== "") {
+      const query = encodeURIComponent(searchInput.value);
+      window.open(`https://www.google.com/search?q=${query}`, "_blank"); // Open in new tab
+      searchInput.value = ""; // Clear input field
+    }
+  });
+});

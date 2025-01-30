@@ -311,7 +311,7 @@ display: flex;
 }
 .clear-button {
   position: absolute;
-  right: 10px;
+  right: 5px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
@@ -321,8 +321,8 @@ display: flex;
   padding: 0;
 }
 .clear-button-svg {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: transparent;
   border-radius: 0%;
 }
