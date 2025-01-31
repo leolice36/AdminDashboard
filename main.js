@@ -31,16 +31,16 @@ const input = document.querySelector('.search-input');
 
 
 
-   const displayLimit = 21; // Number of characters to display in the input
+const displayLimit = 21; // Number of characters to display in the input
 
-  input.addEventListener('input', () => {
-    const fullValue = input.value; // Get the full input value
-    const truncatedValue = fullValue.slice(-displayLimit); // Display only the last N characters
-    input.value = truncatedValue; // Update the input's visible value
-  });
+input.addEventListener('input', () => {
+  const fullValue = input.value; // Get the full input value
+  const truncatedValue = fullValue.slice(-displayLimit); // Display only the last N characters
+  input.value = truncatedValue; // Update the input's visible value
+});
 
 
-  function adjustFlexibleDivs(containerSelector, fixedDivSelector, flexibleDivSelector) {
+function adjustFlexibleDivs(containerSelector, fixedDivSelector, flexibleDivSelector) {
     const container = document.querySelector(containerSelector);
     
     // Get the total height of the container
@@ -63,7 +63,7 @@ const input = document.querySelector('.search-input');
     flexibleDivs.forEach(div => {
       div.style.height = `${flexibleHeight}px`;
     });
-  }
+}
   
 // Adjust heights on initial load and on window resize
 adjustFlexibleDivs('.right', '.right > .nav-buttons, .right > .horizontal-divider', '.right > .announcements, .right > .trending');
@@ -153,19 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  function showFullyVisibleChildren(parentSelector, delay) {
+function showFullyVisibleChildren(parentSelector, delay) {
     setTimeout(() => {
       const parent = document.querySelector(parentSelector);
 
@@ -184,10 +172,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }, delay); // Delay is in milliseconds
-  }
+}
   showFullyVisibleChildren('.announce-content', 200);
 
-  function removeBorderFromLastVisibleChild(selector, delay) {
+function removeBorderFromLastVisibleChild(selector, delay) {
     // Select the parent div using the passed selector
     const parentDiv = document.querySelector(selector);
     
@@ -209,11 +197,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }, delay);
-  }
+}
   
-  // Example usage:
-  // Remove border from the last visible child of the div with id 'parentDiv' after a 2-second delay (2000ms)
-  removeBorderFromLastVisibleChild('.announce-content', 250);
+// Example usage:
+// Remove border from the last visible child of the div with id 'parentDiv' after a 2-second delay (2000ms)
+removeBorderFromLastVisibleChild('.announce-content', 250);
   
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -245,3 +233,51 @@ function toggleDarkMode() {
   //     button.textContent = "Dark Mode";
   // }
 }
+
+const menuItems = document.querySelectorAll('.menu-item');
+      const contentDiv = document.querySelector('.projects');
+      const parentTarget = document.querySelector('.center-section');
+      const childTarget = document.querySelector('#center-divider');
+      let currentDynamicContent = null;
+
+      menuItems.forEach(item => {
+          item.addEventListener('click', function() {
+              menuItems.forEach(i => i.classList.remove('active'));
+              this.classList.add('active');
+              
+              const target = this.getAttribute('data-target');
+              if (target === 'home') {
+                  contentDiv.classList.remove('hidden');
+                  if (currentDynamicContent) {
+                      currentDynamicContent.remove();
+                      currentDynamicContent = null;
+                  }
+              } else {
+                  contentDiv.classList.add('hidden');
+                  if (currentDynamicContent) {
+                      currentDynamicContent.remove();
+                  }
+                  currentDynamicContent = document.createElement('div');
+                  currentDynamicContent.classList.add('dynamic-content');
+                  // currentDynamicContent.innerHTML = `<h1>${target.charAt(0).toUpperCase() + target.slice(1)}</h1><p>Content for ${target}</p>`;
+                    fetch('menuContent.json')
+                      .then(response => response.json())
+                      .then(data => {
+                        // Get the content for the target from the JSON
+                        const content = data[target];
+
+                        // Dynamically insert the new content: header, paragraph, and image
+                        currentDynamicContent.innerHTML = `
+                          <div class="content-container">
+                            <div>${content.header}</div>
+                            <p>${content.paragraph}</p>
+                            <img src="${content.image}" alt="${content.header}">
+                          </div>
+                        `;
+                      })
+                      .catch(error => console.error('Error loading JSON:', error));
+                                  
+                  parentTarget.insertBefore(currentDynamicContent, childTarget);
+              }
+          });
+      });

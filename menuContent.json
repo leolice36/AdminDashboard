@@ -1,0 +1,49 @@
+{
+    "home": {
+      "header": "Welcome to the Home Page",
+      "paragraph": "This is the homepage of our website. Here you can find all the latest updates.",
+      "image": "images/white.png"
+    },
+    "profile": {
+      "header": "User Profile",
+      "paragraph": "<div><img src='images/header/user-circle.svg'><input class=\"search-input\" type=\"text\" placeholder=\"Full Name\" value=\"Leo Mojica\"><input class=\"search-input\" type=\"email\" placeholder=\"Email\" value=\"leomojica36@gmail.com\"><input class=\"search-input\" type=\"tel\" placeholder=\"Phone Number\" value=\"+3326154789\"><input class=\"search-input\" type=\"text\" placeholder=\"Username\" value=\"leolice36\"><input class=\"search-input\" type=\"password\" placeholder=\"New Password\"><select><option value=\"public\">Public</option><option value=\"private\">Private</option><option value=\"friends-only\">Friends Only</option></select><button style=\"background: rgb(92,0,130); color: white; border: none; cursor: pointer;\">Save Changes</button></div>",
+      "image": "images/white.png"
+    }
+    ,
+    "messages": {
+      "header": "Your Messages",
+      "paragraph": "Check your inbox for any new messages from friends and colleagues.",
+      "image": "images/white.png"
+    },
+    "history": {
+      "header": "Your History",
+      "paragraph": "Here you can view your activity history and previous actions.",
+      "image": "images/white.png"
+    },
+    "tasks": {
+      "header": "Task Management",
+      "paragraph": "Manage your tasks efficiently and keep track of deadlines.",
+      "image": "images/white.png"
+    },
+    "communities": {
+      "header": "Communities",
+      "paragraph": "Join and interact with various communities to share ideas and collaborate.",
+      "image": "images/white.png"
+    },
+    "settings": {
+      "header": "Settings",
+      "paragraph": "Customize your preferences and configure your account settings.",
+      "image": "images/white.png"
+    },
+    "support": {
+      "header": "Support",
+      "paragraph": "If you need help, feel free to reach out to our support team.",
+      "image": "images/white.png"
+    },
+    "privacy": {
+      "header": "Privacy Settings",
+      "paragraph": "Control your privacy preferences and data sharing options.",
+      "image": "images/white.png"
+    }
+  }
+  

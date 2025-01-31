@@ -80,12 +80,71 @@ body .container, body .container *{
   background-color:#FFD30F;
 }
 
-.content, .dynamic-content {
+.dynamic-content {
   flex-grow: 1;
-  padding: 20px;
-  background-color: #f4f4f4;
+  padding: 96px 60px 20px 30px;
+  background-color: transparent;
 }
-.hidden {
+
+.dynamic-content .content-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.dynamic-content .content-container div{
+  text-align: center;
+  font-weight: bold;
+  font-size: large;
+}
+.dynamic-content .content-container p + div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.dynamic-content .content-container p + div select, .dynamic-content .content-container p + div button{
+  width: 340px;
+  border-radius: 20px;
+  height: 34px;
+  border: var(--blackish) solid var(--standard-line-weight);
+}
+
+.dynamic-content .content-container p + div select{
+  background-color: transparent;
+  padding: 1px 5px 0px 10.5px;
+}
+
+
+
+.dynamic-content .content-container p + div input{
+  margin-bottom: 20px;
+  border: 0px;
+  border-radius: 0;
+  border-left: solid 2px rgb(92,0,130);
+}
+
+.dynamic-content .content-container p + div input:focus{
+  border: none;
+  border-radius: 20px;
+}
+
+.dynamic-content .content-container p + div *{
+  margin-bottom: 20px;
+
+}
+.dynamic-content .content-container p + div img{
+  margin-bottom: 30px;
+  height: 100px;
+}
+
+.dynamic-content .content-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.projects.hidden {
   display: none;
 }
 
@@ -473,4 +532,4 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 
 .show { --column-1: var(--wide-side-panel-width); }
 .expand { width: var(--wide-side-panel-width);}
-.rotate { transform: rotate(180deg); transition: .5s; }
+#red.rotate { transform: rotate(180deg); transition: .5s; }
