@@ -72,7 +72,15 @@ body .container, body .container *{
   gap: 20px;
   padding-left: 0px;
   font-size: var(--font-smaller);
+  cursor: pointer;
+  transition: background-color 0.5s;
 }
+
+.menu .menu-item:hover, .menu .menu-item.active {
+  background-color:#FFD30F;
+  
+}
+
 .expand .menu .menu-item{
   padding-left: 20px;
 }
