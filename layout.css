@@ -78,7 +78,15 @@ body .container, body .container *{
 
 .menu .menu-item:hover, .menu .menu-item.active {
   background-color:#FFD30F;
-  
+}
+
+.content, .dynamic-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+.hidden {
+  display: none;
 }
 
 .expand .menu .menu-item{
@@ -220,12 +228,6 @@ body .container, body .container *{
   margin-bottom: 15px;
   font-size: var(--font-smaller);
 }
-
-
-
-
-
-
 
 
 
@@ -376,8 +378,6 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   color: black;
 }
 
-
-
 .container .header #profile {
   display: flex;
   align-items: center;
@@ -459,7 +459,7 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 .centered-div {
   position: fixed;
   font-size: xx-large;
-  top: 16%;
+  top: 130px;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
@@ -467,6 +467,7 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   border-radius: 8px;
   z-index: 9999; /* Ensures it's above all other elements */
   /* text-shadow: 0 0 15px white, 0 0 15px white, 0 0 15px white; */
+  user-select: none;
 }
 
 
