@@ -6,7 +6,7 @@
     },
     "profile": {
       "header": "User Profile",
-      "paragraph": "<div><img src='images/header/user-circle.svg'><input class=\"search-input\" type=\"text\" placeholder=\"Full Name\" value=\"Leo Mojica\"><input class=\"search-input\" type=\"email\" placeholder=\"Email\" value=\"leomojica36@gmail.com\"><input class=\"search-input\" type=\"tel\" placeholder=\"Phone Number\" value=\"+3326154789\"><input class=\"search-input\" type=\"text\" placeholder=\"Username\" value=\"leolice36\"><input class=\"search-input\" type=\"password\" placeholder=\"New Password\"><select><option value=\"public\">Public</option><option value=\"private\">Private</option><option value=\"friends-only\">Friends Only</option></select><button style=\"background: rgb(92,0,130); color: white; border: none; cursor: pointer;\">Save Changes</button></div>",
+      "paragraph": "<div><img src='images/header/user-circle.svg'><input class=\"search-input\" type=\"text\" placeholder=\"Full Name\" value=\"Leo Mojica\"><input class=\"search-input\" type=\"email\" placeholder=\"Email\" value=\"leomojica36@gmail.com\"><input class=\"search-input\" type=\"tel\" placeholder=\"Phone Number\" value=\"+3326154789\"><input class=\"search-input\" type=\"text\" placeholder=\"Username\" value=\"leolice36\"><input class=\"search-input\" type=\"password\" placeholder=\"New Password\"><select><option value=\"public\">Public</option><option value=\"private\">Private</option><option value=\"friends-only\">Friends Only</option></select><button style=\"background: rgb(92,0,130); color: white; border: none; cursor: pointer;\">Save</button></div>",
       "image": "images/white.png"
     }
     ,

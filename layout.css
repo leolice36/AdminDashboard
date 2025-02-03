@@ -104,16 +104,26 @@ body .container, body .container *{
   padding-top: 20px;
 }
 
-.dynamic-content .content-container p + div select, .dynamic-content .content-container p + div button{
+.dynamic-content .content-container p + div select {
   width: 340px;
   border-radius: 20px;
   height: 34px;
   border: var(--blackish) solid var(--standard-line-weight);
 }
 
+.dynamic-content .content-container p + div button{
+  width: 120px;
+  border-radius: 20px;
+  height: 34px;
+  font-size: var(--font-smaller);
+}
+
+
 .dynamic-content .content-container p + div select{
   background-color: transparent;
   padding: 1px 5px 0px 10.5px;
+  border: solid 2px rgb(92,0,130);
+  font-size: var(--font-smaller);
 }
 
 
@@ -123,11 +133,13 @@ body .container, body .container *{
   border: 0px;
   border-radius: 0;
   border-left: solid 2px rgb(92,0,130);
+  font-size: var(--font-smaller);
 }
 
 .dynamic-content .content-container p + div input:focus{
   border: none;
   border-radius: 20px;
+  outline: #FFD30F solid 2px;
 }
 
 .dynamic-content .content-container p + div *{
