@@ -18,20 +18,20 @@ showMenu('red', 'grid-container', 'sidebar');
 
 
 const input = document.querySelector('.search-input');
-        const clearButton = document.querySelector('.clear-button');
+const clearButton = document.querySelector('.clear-button');
 
-        input.addEventListener('input', function() {
-            clearButton.style.display = this.value ? 'block' : 'none';
-        });
+input.addEventListener('input', function() {
+    clearButton.style.display = this.value ? 'block' : 'none';
+});
 
-        clearButton.addEventListener('click', function() {
-            input.value = '';
-            this.style.display = 'none';
-        });
+clearButton.addEventListener('click', function() {
+    input.value = '';
+    this.style.display = 'none';
+});
 
 
 
-const displayLimit = 21; // Number of characters to display in the input
+const displayLimit = 24; // Number of characters to display in the input
 
 input.addEventListener('input', () => {
   const fullValue = input.value; // Get the full input value
