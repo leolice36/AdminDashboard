@@ -1,99 +1,122 @@
 [
-    {
-      "profileName": "Alice Johnson",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Bob Smith",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Charlie Brown",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "David Lee",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Eva Martinez",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Frank Wilson",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Grace Kim",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Hannah White",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Isaac Harris",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Jackie Clark",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Kevin Anderson",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Liam Thomas",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Mia Robinson",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Nina Patel",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Oliver Scott",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Parker Lewis",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Quinn Cooper",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Rachel Evans",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Samuel Adams",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Tina Baker",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Ursula Mitchell",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Victor Lewis",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Wendy Martinez",
-      "imgSrc": "images/header/user-circle.svg"
-    },
-    {
-      "profileName": "Xander King",
-      "imgSrc": "images/header/user-circle.svg"
-    }
-  ]
-  
+  {
+    "profileName": "Alice Johnson",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 28, "location": "New York, USA", "email": "alice.johnson@example.com" }
+  },
+  {
+    "profileName": "Bob Smith",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 35, "location": "London, UK", "email": "bob.smith@example.com" }
+  },
+  {
+    "profileName": "Charlie Brown",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 30, "location": "Berlin, Germany", "email": "charlie.brown@example.com" }
+  },
+  {
+    "profileName": "David Lee",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 40, "location": "Paris, France", "email": "david.lee@example.com" }
+  },
+  {
+    "profileName": "Eva Martinez",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 32, "location": "Barcelona, Spain", "email": "eva.martinez@example.com" }
+  },
+  {
+    "profileName": "Frank Wilson",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 45, "location": "Sydney, Australia", "email": "frank.wilson@example.com" }
+  },
+  {
+    "profileName": "Grace Kim",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 27, "location": "Seoul, South Korea", "email": "grace.kim@example.com" }
+  },
+  {
+    "profileName": "Hannah White",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 29, "location": "Toronto, Canada", "email": "hannah.white@example.com" }
+  },
+  {
+    "profileName": "Isaac Harris",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 33, "location": "Cape Town, South Africa", "email": "isaac.harris@example.com" }
+  },
+  {
+    "profileName": "Jackie Clark",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 26, "location": "Tokyo, Japan", "email": "jackie.clark@example.com" }
+  },
+  {
+    "profileName": "Kevin Anderson",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 38, "location": "Toronto, Canada", "email": "kevin.anderson@example.com" }
+  },
+  {
+    "profileName": "Liam Thomas",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 34, "location": "Auckland, New Zealand", "email": "liam.thomas@example.com" }
+  },
+  {
+    "profileName": "Mia Robinson",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 31, "location": "Dubai, UAE", "email": "mia.robinson@example.com" }
+  },
+  {
+    "profileName": "Nina Patel",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 29, "location": "Mumbai, India", "email": "nina.patel@example.com" }
+  },
+  {
+    "profileName": "Oliver Scott",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 42, "location": "Mexico City, Mexico", "email": "oliver.scott@example.com" }
+  },
+  {
+    "profileName": "Parker Lewis",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 36, "location": "Sao Paulo, Brazil", "email": "parker.lewis@example.com" }
+  },
+  {
+    "profileName": "Quinn Cooper",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 33, "location": "Madrid, Spain", "email": "quinn.cooper@example.com" }
+  },
+  {
+    "profileName": "Rachel Evans",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 39, "location": "Rome, Italy", "email": "rachel.evans@example.com" }
+  },
+  {
+    "profileName": "Samuel Adams",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 41, "location": "Lagos, Nigeria", "email": "samuel.adams@example.com" }
+  },
+  {
+    "profileName": "Tina Baker",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 27, "location": "London, UK", "email": "tina.baker@example.com" }
+  },
+  {
+    "profileName": "Ursula Mitchell",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 34, "location": "Berlin, Germany", "email": "ursula.mitchell@example.com" }
+  },
+  {
+    "profileName": "Victor Lewis",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 45, "location": "Cairo, Egypt", "email": "victor.lewis@example.com" }
+  },
+  {
+    "profileName": "Wendy Martinez",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 28, "location": "Singapore", "email": "wendy.martinez@example.com" }
+  },
+  {
+    "profileName": "Xander King",
+    "imgSrc": "images/header/user-circle.svg",
+    "profileInfo": { "age": 33, "location": "Buenos Aires, Argentina", "email": "xander.king@example.com" }
+  }
+]

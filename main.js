@@ -148,27 +148,7 @@ async function generateDivs(min = 5, max = 10, createDiv, fetchData, parentSelec
   }
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  try {
-      // First, generate divs for announcements
-      await generateDivs(5, 10, createAnnounceContent, fetchTexts, '.announce-content');
-      
-      // After announcements are generated, show fully visible children
-      await showFullyVisibleChildren('.announce-content', 200);
-      
-      // After showing fully visible children, remove border from last visible child
-      await removeBorderFromLastVisibleChild('.announce-content', 0);
-      
-      // Generate divs for profiles
-      await generateDivs(8, 8, createTrendContent, fetchProfiles, '.trend-content');
-      
-      // Add click event listeners to announce-content children
-      await addAnnounceContentListeners();
 
-  } catch (error) {
-      console.error('Error in sequence:', error);
-  }
-});
 
 function showFullyVisibleChildren(parentSelector, delay) {
     return new Promise((resolve) => {
@@ -300,7 +280,7 @@ const menuItems = document.querySelectorAll('.menu-item');
       });
 
 
-function addAnnounceContentListeners() {
+function expandAnnounce() {
   return new Promise((resolve) => {
       const contentWrappers = document.querySelectorAll(".announce-content .child");
       console.log({contentWrappers});
@@ -324,3 +304,26 @@ function addAnnounceContentListeners() {
       resolve(); // Resolve the promise after adding all listeners
   });
 }
+
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+      // First, generate divs for announcements
+      await generateDivs(5, 10, createAnnounceContent, fetchTexts, '.announce-content');
+      
+      // After announcements are generated, show fully visible children
+      await showFullyVisibleChildren('.announce-content', 0);
+      
+      // After showing fully visible children, remove border from last visible child
+      await removeBorderFromLastVisibleChild('.announce-content', 0);
+      
+      // Generate divs for profiles
+      await generateDivs(8, 8, createTrendContent, fetchProfiles, '.trend-content');
+      
+      // Add click event listeners to announce-content children
+      await expandAnnounce();
+
+  } catch (error) {
+      console.error('Error in sequence:', error);
+  }
+});
