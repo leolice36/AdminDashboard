@@ -128,19 +128,10 @@ function appendToParent(element, parentSelector) {
     }
 }
 
-async function generateDivs(min = 5, max = 10, createDiv, fetchData, parentSelector) {
-  return new Promise((resolve, reject) => {
-      // Existing generateDivs logic here
-      // ...
-      // When done, call resolve()
-      resolve();
-  });
-}
 
 async function generateDivs(min = 5, max = 10, createDiv, fetchData, parentSelector) {
   try {
       const data = await fetchData();
-      console.log('Fetched data:', data); // Log to check if data is being fetched correctly
 
       const numObjects = Math.floor(Math.random() * (max - min + 1)) + min;
       const selectedData = data
@@ -170,6 +161,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       // Generate divs for profiles
       await generateDivs(8, 8, createTrendContent, fetchProfiles, '.trend-content');
+      
+      // Add click event listeners to announce-content children
+      await addAnnounceContentListeners();
+
   } catch (error) {
       console.error('Error in sequence:', error);
   }
@@ -303,3 +298,29 @@ const menuItems = document.querySelectorAll('.menu-item');
               }
           });
       });
+
+
+function addAnnounceContentListeners() {
+  return new Promise((resolve) => {
+      const contentWrappers = document.querySelectorAll(".announce-content .child");
+      console.log({contentWrappers});
+      contentWrappers.forEach((wrapper) => {
+          wrapper.addEventListener("click", function () {
+              const content = this.querySelector(".content");
+              console.log({content});
+              const isExpanded = content.classList.contains("expanded");
+
+              // Collapse all content except the clicked one
+              contentWrappers.forEach((w) => {
+                  if (w !== this) {
+                      w.querySelector(".content").classList.remove("expanded");
+                  }
+              });
+
+              // Toggle the clicked content
+              content.classList.toggle("expanded");
+          });
+      });
+      resolve(); // Resolve the promise after adding all listeners
+  });
+}

@@ -271,6 +271,7 @@ body .container, body .container *{
   border-bottom: var(--standard-line-weight) solid var(--blackish);
   padding-bottom: 15px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .announce-content .title {
@@ -288,6 +289,11 @@ body .container, body .container *{
   font-size: var(--font-smallest);
   font-weight: 300;
   line-height: 22px;
+}
+
+.announce-content .content.expanded {
+  display: block;
+  max-height: 500px;
 }
 
 
