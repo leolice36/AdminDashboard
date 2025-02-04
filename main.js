@@ -129,80 +129,102 @@ function appendToParent(element, parentSelector) {
 }
 
 async function generateDivs(min = 5, max = 10, createDiv, fetchData, parentSelector) {
-    try {
-        const data = await fetchData();
-        console.log('Fetched data:', data); // Log to check if data is being fetched correctly
-
-        const numObjects = Math.floor(Math.random() * (max - min + 1)) + min;
-        const selectedData = data
-            .sort(() => 0.5 - Math.random())
-            .slice(0, numObjects);
-
-        selectedData.forEach(item => {
-            const div = createDiv(item);  // Pass the item to createDiv
-            appendToParent(div, parentSelector);  // Append the created div (or img) to the parent
-        });
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
+  return new Promise((resolve, reject) => {
+      // Existing generateDivs logic here
+      // ...
+      // When done, call resolve()
+      resolve();
+  });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    generateDivs(5, 10, createAnnounceContent, fetchTexts, '.announce-content');  // For announcements
-    generateDivs(8, 8, createTrendContent, fetchProfiles, '.trend-content');       // For profiles
+async function generateDivs(min = 5, max = 10, createDiv, fetchData, parentSelector) {
+  try {
+      const data = await fetchData();
+      console.log('Fetched data:', data); // Log to check if data is being fetched correctly
+
+      const numObjects = Math.floor(Math.random() * (max - min + 1)) + min;
+      const selectedData = data
+          .sort(() => 0.5 - Math.random())
+          .slice(0, numObjects);
+
+      selectedData.forEach(item => {
+          const div = createDiv(item);  // Pass the item to createDiv
+          appendToParent(div, parentSelector);  // Append the created div (or img) to the parent
+      });
+  } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error; // Rethrow the error to be caught in the main try-catch block
+  }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+      // First, generate divs for announcements
+      await generateDivs(5, 10, createAnnounceContent, fetchTexts, '.announce-content');
+      
+      // After announcements are generated, show fully visible children
+      await showFullyVisibleChildren('.announce-content', 200);
+      
+      // After showing fully visible children, remove border from last visible child
+      await removeBorderFromLastVisibleChild('.announce-content', 0);
+      
+      // Generate divs for profiles
+      await generateDivs(8, 8, createTrendContent, fetchProfiles, '.trend-content');
+  } catch (error) {
+      console.error('Error in sequence:', error);
+  }
 });
 
-
 function showFullyVisibleChildren(parentSelector, delay) {
-    setTimeout(() => {
-      const parent = document.querySelector(parentSelector);
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const parent = document.querySelector(parentSelector);
+            const children = parent.querySelectorAll(`${parentSelector} > *`);
 
-      const children = parent.querySelectorAll(`${parentSelector} > *`); // Compound selector for direct children
+            children.forEach(child => {
+                const childRect = child.getBoundingClientRect();
+                const parentRect = parent.getBoundingClientRect();
 
+                if (childRect.top >= parentRect.top && childRect.bottom <= parentRect.bottom) {
+                    child.style.display = 'block';
+                } else {
+                    child.style.display = 'none';
+                }
+            });
 
-      children.forEach(child => {
-        const childRect = child.getBoundingClientRect();
-        const parentRect = parent.getBoundingClientRect();
-
-        // Check if the child is fully visible within the parent
-        if (childRect.top >= parentRect.top && childRect.bottom <= parentRect.bottom) {
-          child.style.display = 'block'; // Ensure the child is displayed
-        } else {
-          child.style.display = 'none'; // Hide the child
-        }
-      });
-    }, delay); // Delay is in milliseconds
+            resolve();
+        }, delay);
+    });
 }
-  showFullyVisibleChildren('.announce-content', 200);
 
 function removeBorderFromLastVisibleChild(selector, delay) {
-    // Select the parent div using the passed selector
-    const parentDiv = document.querySelector(selector);
-    
-    if (!parentDiv) {
-      console.error('Parent div not found!');
-      return;
-    }
-  
-    // Wait for the specified delay before running the code
-    setTimeout(() => {
-      const children = parentDiv.children;
-  
-      for (let i = children.length - 1; i >= 0; i--) {
-        const child = children[i];
-  
-        if (child.offsetWidth > 0 && child.offsetHeight > 0 && window.getComputedStyle(child).visibility !== 'hidden') {
-          child.style.border = 'none';
-          break;
+    return new Promise((resolve) => {
+        const parentDiv = document.querySelector(selector);
+        
+        if (!parentDiv) {
+            console.error('Parent div not found!');
+            resolve();
+            return;
         }
-      }
-    }, delay);
+      
+        setTimeout(() => {
+            const children = parentDiv.children;
+      
+            for (let i = children.length - 1; i >= 0; i--) {
+                const child = children[i];
+        
+                if (child.offsetWidth > 0 && child.offsetHeight > 0 && window.getComputedStyle(child).visibility !== 'hidden') {
+                    child.style.border = 'none';
+                    break;
+                }
+            }
+
+            resolve();
+        }, delay);
+    });
 }
-  
-// Example usage:
-// Remove border from the last visible child of the div with id 'parentDiv' after a 2-second delay (2000ms)
-removeBorderFromLastVisibleChild('.announce-content', 250);
-  
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.querySelector(".search-input");
