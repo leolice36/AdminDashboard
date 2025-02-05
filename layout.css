@@ -304,6 +304,7 @@ body .container, body .container *{
   min-height: 36px;
   margin-bottom: 15px;
   font-size: var(--font-smaller);
+  cursor: pointer;
 }
 
 
@@ -547,7 +548,57 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   user-select: none;
 }
 
-
 .show { --column-1: var(--wide-side-panel-width); }
 .expand { width: var(--wide-side-panel-width);}
 #red.rotate { transform: rotate(180deg); transition: .5s; }
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(157, 129, 46, 0.08);
+  backdrop-filter: blur(5px);
+}
+
+#profile-modal img{
+  height: 100px;
+  margin-bottom: 5px;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  width: 400px;
+  font-size: var(--font-smaller);
+  padding-right: 14px;
+  border-left: 6px rgb(92,0,130) solid;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+.modal-content #modal-username {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.close {
+  color: var(--blackish);
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 0;
+
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(92,0,130);
+  text-decoration: none;
+}

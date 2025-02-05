@@ -148,7 +148,7 @@ async function generateDivs(min = 5, max = 10, createDiv, fetchData, parentSelec
   }
 }
 
-
+// generateDivs(8, 8, createTrendContent, fetchProfiles, '.trend-content')
 
 function showFullyVisibleChildren(parentSelector, delay) {
     return new Promise((resolve) => {
@@ -199,8 +199,6 @@ function removeBorderFromLastVisibleChild(selector, delay) {
     });
 }
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.querySelector(".search-input");
 
@@ -232,62 +230,59 @@ function toggleDarkMode() {
 }
 
 const menuItems = document.querySelectorAll('.menu-item');
-      const contentDiv = document.querySelector('.projects');
-      const parentTarget = document.querySelector('.center-section');
-      const childTarget = document.querySelector('#center-divider');
-      let currentDynamicContent = null;
+const contentDiv = document.querySelector('.projects');
+const parentTarget = document.querySelector('.center-section');
+const childTarget = document.querySelector('#center-divider');
+let currentDynamicContent = null;
 
-      menuItems.forEach(item => {
-          item.addEventListener('click', function() {
-              menuItems.forEach(i => i.classList.remove('active'));
-              this.classList.add('active');
-              
-              const target = this.getAttribute('data-target');
-              if (target === 'home') {
-                  contentDiv.classList.remove('hidden');
-                  if (currentDynamicContent) {
-                      currentDynamicContent.remove();
-                      currentDynamicContent = null;
-                  }
-              } else {
-                  contentDiv.classList.add('hidden');
-                  if (currentDynamicContent) {
-                      currentDynamicContent.remove();
-                  }
-                  currentDynamicContent = document.createElement('div');
-                  currentDynamicContent.classList.add('dynamic-content');
-                  // currentDynamicContent.innerHTML = `<h1>${target.charAt(0).toUpperCase() + target.slice(1)}</h1><p>Content for ${target}</p>`;
-                    fetch('menuContent.json')
-                      .then(response => response.json())
-                      .then(data => {
-                        // Get the content for the target from the JSON
-                        const content = data[target];
+menuItems.forEach(item => {
+    item.addEventListener('click', function() {
+        menuItems.forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        
+        const target = this.getAttribute('data-target');
+        if (target === 'home') {
+            contentDiv.classList.remove('hidden');
+            if (currentDynamicContent) {
+                currentDynamicContent.remove();
+                currentDynamicContent = null;
+            }
+        } else {
+            contentDiv.classList.add('hidden');
+            if (currentDynamicContent) {
+                currentDynamicContent.remove();
+            }
+            currentDynamicContent = document.createElement('div');
+            currentDynamicContent.classList.add('dynamic-content');
+            // currentDynamicContent.innerHTML = `<h1>${target.charAt(0).toUpperCase() + target.slice(1)}</h1><p>Content for ${target}</p>`;
+              fetch('menuContent.json')
+                .then(response => response.json())
+                .then(data => {
+                  // Get the content for the target from the JSON
+                  const content = data[target];
 
-                        // Dynamically insert the new content: header, paragraph, and image
-                        currentDynamicContent.innerHTML = `
-                          <div class="content-container">
-                            <div>${content.header}</div>
-                            <p>${content.paragraph}</p>
-                            <img src="${content.image}" alt="${content.header}">
-                          </div>
-                        `;
-                      })
-                      .catch(error => console.error('Error loading JSON:', error));
-                                  
-                  parentTarget.insertBefore(currentDynamicContent, childTarget);
-              }
-          });
-      });
-
+                  // Dynamically insert the new content: header, paragraph, and image
+                  currentDynamicContent.innerHTML = `
+                    <div class="content-container">
+                      <div>${content.header}</div>
+                      <p>${content.paragraph}</p>
+                      <img src="${content.image}" alt="${content.header}">
+                    </div>
+                  `;
+                })
+                .catch(error => console.error('Error loading JSON:', error));
+                            
+            parentTarget.insertBefore(currentDynamicContent, childTarget);
+        }
+    });
+});
 
 function expandAnnounce() {
   return new Promise((resolve) => {
       const contentWrappers = document.querySelectorAll(".announce-content .child");
-      console.log({contentWrappers});
       contentWrappers.forEach((wrapper) => {
           wrapper.addEventListener("click", function () {
               const content = this.querySelector(".content");
-              console.log({content});
               const isExpanded = content.classList.contains("expanded");
 
               // Collapse all content except the clicked one
@@ -303,6 +298,56 @@ function expandAnnounce() {
       });
       resolve(); // Resolve the promise after adding all listeners
   });
+}
+
+function addClickFunctionality() {
+    const modal = document.getElementById('profile-modal');
+    const closeModal = document.getElementById('close');
+    const modalUsername = document.getElementById('modal-username');
+    const modalAge = document.getElementById('modal-age');
+    const modalLocation = document.getElementById('modal-location');
+    const modalEmail = document.getElementById('modal-email');
+    const center = document.querySelector('.centered-div')
+    // Add click event to all child divs
+    document.querySelectorAll('.trendProfile').forEach((profile) => {
+        profile.addEventListener('click', async () => {
+            center.style.display = 'none';
+            try {
+                const trendData = await fetchProfiles();
+                const profileNameToFind = profile.textContent.trim(); // Get text content of clicked div
+
+                // Find the user based on profileName
+                const user = trendData.find(profile => profile.profileName === profileNameToFind);
+
+                if (!user) {
+                    console.error('User not found');
+                    return;
+                }
+
+                modalUsername.textContent = user.profileName;
+                modalAge.textContent = `Age: ${user.profileInfo.age}`;
+                modalLocation.textContent = `Location: ${user.profileInfo.location}`;
+                modalEmail.textContent = `Email: ${user.profileInfo.email}`;
+                
+                modal.style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        });
+    });
+
+    // Close modal functionality
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+        center.style.display = 'block';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+            center.style.display = 'block';
+        }
+    });
 }
 
 
@@ -322,6 +367,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       // Add click event listeners to announce-content children
       await expandAnnounce();
+
+      //Add event listener to user profiles 
+      await addClickFunctionality();
 
   } catch (error) {
       console.error('Error in sequence:', error);
