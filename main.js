@@ -382,7 +382,7 @@ function handleFileUpload(event) {
     const notification = document.getElementById('upload-notification');
 
     if (file) {
-        notification.innerHTML = `Yes, <span>${file.name}</span> was totally uploaded frfr ;)`;
+        notification.innerHTML = `Yes, <span>${file.name}</span> was totally uploaded frfr <span class = 'emoji'>&#128521</span>`;
         notification.style.display = 'block';
 
         setTimeout(() => {
