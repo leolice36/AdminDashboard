@@ -47,8 +47,7 @@
             </div>
           </div>
           <div id="headline"></div>
-          </div>
-
+        </div>
         <div class="sidebar" id="sidebar">
           <div class="menu" id=menu>
             <div class="top-menu">
@@ -73,7 +72,6 @@
               <div class="vertical-divider tog-div-bot"></div>
           </div>
         </div>
-
         <div class="center-section" id="center">
           <div class="projects">
             <div class="projects-label">Projects</div>
@@ -111,7 +109,6 @@
           </div>
           <div class="vertical-divider" id="center-divider"></div>
         </div>
-
         <div class="right">
           <div class="nav-buttons">
             <div class="button-container">
@@ -124,7 +121,7 @@
               <span>Share</span>
             </div>
             <div class="vertical-divider"></div>
-            <div class="button-container">
+            <div class="button-container upload-container" onclick="document.getElementById('fileInput').click();">
               <img src="images/rightside/upload.svg" alt="upload icon">
               <span>Upload</span>
             </div>
@@ -145,6 +142,8 @@
           </div>
         </div>
     </div>  
+
+
     <div class="centered-div">What did you expect?</div>
     <!-- Modal popup -->
     <div class="modal" id="profile-modal">
@@ -157,6 +156,13 @@
         <p id="modal-email"></p>
       </div>
     </div>
+
+    <!-- Upload Notification popup -->
+    <input type="file" id="fileInput" onchange="handleFileUpload(event)" />
+    <div class="notification" id="upload-notification"></div>
+
+
     <script src="main.js"></script>
 </body>
 </html>
+

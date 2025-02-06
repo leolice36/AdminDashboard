@@ -350,7 +350,7 @@ function addClickFunctionality() {
     });
 }
 
-
+// Main right side function sequence
 document.addEventListener('DOMContentLoaded', async () => {
   try {
       // First, generate divs for announcements
@@ -375,3 +375,20 @@ document.addEventListener('DOMContentLoaded', async () => {
       console.error('Error in sequence:', error);
   }
 });
+
+function handleFileUpload(event) {
+    const fileInput = event.target;
+    const file = event.target.files[0];
+    const notification = document.getElementById('upload-notification');
+
+    if (file) {
+        notification.innerHTML = `Yes, <span>${file.name}</span> was totally uploaded frfr ;)`;
+        notification.style.display = 'block';
+
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000); // Hide the notification after 3 seconds
+        fileInput.value = '';
+    }       
+}
+

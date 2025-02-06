@@ -602,3 +602,30 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   color: rgb(92,0,130);
   text-decoration: none;
 }
+
+/* For upload */
+#fileInput {
+  display: none;
+}
+
+#upload-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #ffe25fc8;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+  font-size: var(--font-smaller);
+  z-index: 1000;
+  /* border: #FFD30F solid var(--standard-line-weight); */
+}
+
+#upload-notification span{
+  font-weight: bold;
+  color: rgb(92,0,130);
+}
+
+.button-container.upload-container {
+  cursor: pointer;
+}
