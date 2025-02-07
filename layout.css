@@ -662,11 +662,12 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   padding: 20px;
   text-align: left;
   z-index: 500;
-  height: 175px;
-  width: 340px;
+  height: 169px;
+  width: 331px;
   border-left: 6px rgb(92, 0, 130) solid;
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
+  padding-top: 33px;
 }
 .modal-overlay .modal .close-btn {
   position: absolute;
@@ -692,14 +693,16 @@ text-decoration: none;
 
 .modal-overlay .modal .icons {
   display: flex;
-  justify-content:flex-start;
-  gap: 10px;
-  margin: 10px 0 15px 0;
-  width: 300px;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 3px 0 2px 0;
+    width: -webkit-fill-available;
+    height: 50px;
+    flex-wrap: wrap;
 }
 .modal-overlay .modal .icons .icon {
   width: auto;
-  height: 28px;
+  height: 36px;
   background: transparent;
   border-radius: 50%;
   position: relative;
@@ -723,9 +726,9 @@ text-decoration: none;
 .modal-overlay .modal .input-container input {
   border: none;
   padding: 10.5px 15px 9.5px 15px;
-  width: 203px;
+  width: 272px;
   height: 34px;
-  text-align: center;
+  text-align: left;
   background: transparent;
   outline: none;
   transition: box-shadow 0.2s;
@@ -738,18 +741,21 @@ text-decoration: none;
   outline: 3px solid #FFD30F;
   transition: outline 0.1s ease-in-out;
   border: transparent;
+  padding: 10.5px 15px 9.5px 16.5px;
   
 }
 .modal-overlay .modal .input-container .copy-btn {
-  background: rgb(92, 0, 130);
-  color: white;
-  border: none;
-  padding: 0px 20px;
-  cursor: pointer;
-  border-radius: 20px;
-  height: 34px;
-  font-size: var(--font-smaller);
-  font-weight: bold;
+    background: rgb(92, 0, 130);
+    color: white;
+    border: none;
+    padding: 0px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    height: 30px;
+    font-size: var(--font-smaller);
+    font-weight: bold;
+    position: fixed;
+    margin-left: 196px;
 }
 #popup {
   position: fixed;

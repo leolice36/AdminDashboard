@@ -447,7 +447,7 @@ function showPopup() {
 function showIconPopup(event) {
   let existingPopup = document.querySelector('.icon-popup');
   if (existingPopup) existingPopup.remove();
-
+    
   let newIndex;
   do {
     newIndex = Math.floor(Math.random() * messages.length);
