@@ -467,3 +467,39 @@ function showIconPopup(event) {
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  function generateCards() {
+    const cardContainer = document.querySelector(".projects-content");
+
+    fetch("projects.json")
+      .then(response => response.json())
+      .then(posts => {
+        posts.forEach(post => {
+          // Create card div
+          const card = document.createElement("div");
+          card.className = "content-card";
+
+          // Create title
+          const title = document.createElement("div");
+          title.className = "card-header";
+          title.textContent = post.title;
+
+          // Create body text
+          const body = document.createElement("div");
+          body.className = "card-content";
+          body.textContent = post.body;
+
+          // Append title and body to card
+          card.appendChild(title);
+          card.appendChild(body);
+
+          // Append card to container
+          cardContainer.appendChild(card);
+        });
+      })
+      .catch(error => console.error("Error loading projects.json:", error));
+  }
+
+  generateCards(); // Run function after DOM is loaded
+});
