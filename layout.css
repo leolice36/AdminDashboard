@@ -523,6 +523,8 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   font-weight: 600;
   font-size: var(--font-smaller);
   line-height: 28px;
+  width: fit-content;
+  cursor: pointer;
 }
 
 .projects-content .content-card .card-content {
@@ -561,6 +563,145 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 #red.rotate { transform: rotate(180deg); transition: .5s; }
 
 
+
+
+
+.modal-open-btn,
+.modal-submit-btn,
+.modal-close-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.modal-open-btn {
+  background-color: #007bff;
+}
+
+.modal-open-btn:hover {
+  background-color: #0056b3;
+}
+.card-edit-modal-container {
+  display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgb(37 30 7 / 23%);
+}
+
+.card-edit-modal {
+  position: fixed;
+  top: 14%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 40px 24px 20px 30px;
+  width: 400px;
+  font-size: var(--font-smaller);
+  
+  border-left: 4px rgb(92, 0, 130) solid;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+  z-index: 900;
+}
+
+.card-edit-modal-container.active {
+  display: block;
+}
+
+
+
+
+
+.card-edit-modal input,
+.card-edit-modal textarea {
+  width: 100%;
+  margin: 10px 0 20px 0;
+  padding: 10px;
+  border: solid 1px var(--blackish);
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+
+.card-edit-modal input:focus-visible,
+.card-edit-modal textarea:focus-visible {
+  outline: 3px solid #FFD30F;
+  border: none;
+  border-radius: 20px;
+}
+ 
+
+.card-edit-modal textarea {
+  resize: vertical;
+  max-height: 350px;
+  min-height: 150px;
+  border-bottom-right-radius: 0;
+}
+
+.card-edit-modal label {
+  font-size: var(--font-smaller);
+  font-weight: bold;
+}
+
+.modal-action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.modal-action-buttons > div {
+  margin-left: 10px;
+}
+
+.modal-submit-btn {
+  background: rgb(92, 0, 130);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  height: 34px;
+  font-size: var(--font-smaller);
+  font-weight: bold;
+}
+
+.modal-submit-btn:hover {
+  background-color: #218838;
+}
+
+.modal-close-btn {
+  background-color: #dc3545;
+}
+
+.modal-action-buttons .modal-close-btn:hover {
+  color: rgb(92, 0, 130);
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .modal {
   display: none;
   position: fixed;
@@ -579,12 +720,12 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 
 .modal-content {
   background-color: #fff;
-  margin: 15% auto;
+  margin: 16% auto;
   padding: 20px;
   width: 400px;
   font-size: var(--font-smaller);
   padding-right: 14px;
-  border-left: 6px rgb(92,0,130) solid;
+  border-left: 4px rgb(92,0,130) solid;
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
 }
@@ -642,7 +783,8 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 }
 
 .button-container.upload-container, 
-.button-container.share-container{
+.button-container.share-container,
+.button-container.create-container{
   cursor: pointer;
 }
 
@@ -659,7 +801,7 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 .modal-overlay .modal {
   display: block;
   position: fixed;
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
@@ -668,7 +810,7 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   z-index: 500;
   height: 169px;
   width: 331px;
-  border-left: 6px rgb(92, 0, 130) solid;
+  border-left: 4px rgb(92, 0, 130) solid;
   border-top-right-radius: 18px;
   border-bottom-right-radius: 18px;
   padding-top: 33px;
@@ -774,7 +916,7 @@ text-decoration: none;
     line-height: 25px;
     font-weight: bold;
 }
-.icon-popup {
+.icon-popup, .nope-popup {
   position: absolute;
   bottom: 50px;
   left: 50%;
@@ -786,3 +928,18 @@ text-decoration: none;
   font-size: 12px;
   display: none;
 }
+
+.modal-action-buttons .modal-close-btn {
+  position: absolute;
+  top: -2px;
+  right: 5px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--blackish);
+  border: none;
+  border-radius: 5px;
+  font-size: 26px;
+}
+
+
+

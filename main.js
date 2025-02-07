@@ -479,11 +479,12 @@ document.addEventListener("DOMContentLoaded", () => {
           // Create card div
           const card = document.createElement("div");
           card.className = "content-card";
-
+          
           // Create title
           const title = document.createElement("div");
           title.className = "card-header";
           title.textContent = post.title;
+          title.onclick = nopeCantEdit;
 
           // Create body text
           const body = document.createElement("div");
@@ -503,3 +504,104 @@ document.addEventListener("DOMContentLoaded", () => {
 
   generateCards(); // Run function after DOM is loaded
 });
+
+const nopeMessages = [
+    "NOPE",
+    "NOPE Not functional",
+    "NOPE This feature is unavailable",
+    "NOPE Try something else",
+    "NOPE No response detected"
+  ];
+
+
+function nopeCantEdit() {
+    const notification = document.getElementById('upload-notification');
+    console.log('shit')
+
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * nopeMessages.length);
+    } while (newIndex === lastMessageIndex);
+    lastMessageIndex = newIndex;
+
+    notification.innerHTML = nopeMessages[newIndex];
+    notification.style.display = 'block';
+
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 1000); // Hide the notification after 3 seconds
+    fileInput.value = ''; 
+  }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const modalOpenBtn = document.getElementById("createModal")
+    const cardEditModal = document.querySelector(".card-edit-modal-container")
+    const modalSubmitBtn = document.getElementById("submitCard")
+    const modalCloseBtn = document.getElementById("closeModal")
+    const cardDisplayArea = document.querySelector(".projects-content")
+    const cardTitleInput = document.getElementById("cardTitle")
+    const cardContentInput = document.getElementById("cardContent")
+  
+    let editingCard = null
+  
+    const toggleModal = () => {
+        cardEditModal.classList.toggle("active")
+        document.querySelector('.centered-div').style.display = 'none';
+    }
+  
+    const resetModal = () => {
+      cardTitleInput.value = ""
+      cardContentInput.value = ""
+      editingCard = null
+    }
+
+  
+    const createCard = (title, content) => {
+      const card = document.createElement("div")
+      card.classList.add("content-card")
+      card.innerHTML = `<div class = 'card-header'>${title}</div><div class = 'card-content'>${content}</div>`
+      const cardHeader = card.querySelector('.card-header')
+      cardHeader.addEventListener("click", () => editCard(card))
+      return card
+    }
+  
+    const editCard = (card) => {
+      editingCard = card
+      cardTitleInput.value = card.querySelector(".card-header").textContent
+      cardContentInput.value = card.querySelector(".card-content").textContent
+      toggleModal()
+    }
+  
+    modalOpenBtn.addEventListener("click", () => {
+        document.querySelector('.centered-div').style.display = 'block';
+      resetModal()
+      toggleModal()
+    })
+  
+    modalCloseBtn.addEventListener("click", toggleModal)
+    
+    window.addEventListener('click', (event) => {
+        if (event.target === cardEditModal) {
+            toggleModal();
+            center.style.display = 'block';
+        }
+    })
+  
+    modalSubmitBtn.addEventListener("click", () => {
+      const title = cardTitleInput.value.trim()
+      const content = cardContentInput.value.trim()
+
+      if (title && content) {
+        if (editingCard) {
+          editingCard.querySelector(".card-header").textContent = title
+          editingCard.querySelector(".card-content").textContent = content
+        } else {
+          cardDisplayArea.appendChild(createCard(title, content))
+        }
+        toggleModal()
+        resetModal()
+      } else {
+        alert("Please fill out both fields.")
+      }
+    })
+  })
