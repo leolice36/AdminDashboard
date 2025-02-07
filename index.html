@@ -116,7 +116,7 @@
               <span style="padding-right: 7px;">Create</span>
             </div>
             <div class="vertical-divider"></div>
-            <div class="button-container">
+            <div class="button-container share-container" onclick="openModal()">
               <img src="images/rightside/share.svg" alt="share icon">
               <span>Share</span>
             </div>
@@ -160,8 +160,29 @@
     <!-- Upload Notification popup -->
     <input type="file" id="fileInput" onchange="handleFileUpload(event)" />
     <div class="notification" id="upload-notification"></div>
+    
+    <!-- Share modal -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <p>Share this link:</p>
+            <div class="icons">
+                <div class="icon" onclick="showIconPopup(event)"><img src='images/share/facebook.svg'></div>
+                <div class="icon" onclick="showIconPopup(event)"><img src='images/share/instagram.svg'></div>
+                <div class="icon" onclick="showIconPopup(event)"><img src='images/share/xtwit.svg'></div>
+                <div class="icon" onclick="showIconPopup(event)"><img src='images/share/pinterest.svg'></div>
+                <div class="icon" onclick="showIconPopup(event)"><img src='images/share/github.svg'></div>
+                <div class="icon" onclick="showIconPopup(event)"><img src='images/share/telegram.svg'></div>
+            </div>
+            <div class="input-container">
+                <input type="text" value="https://example.com" readonly id="shareLink">
+                <button class="copy-btn" onclick="copyLink()">Copy</button>
+            </div>
+        </div>
+    </div>
+    <div class="popup" id="popup">Link copied!</div>
 
-
+    
     <script src="main.js"></script>
 </body>
 </html>

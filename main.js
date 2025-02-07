@@ -392,3 +392,78 @@ function handleFileUpload(event) {
     }       
 }
 
+let copyCount = 0;
+let timeoutId;
+let blockCopy = false;
+let lastMessageIndex = -1;
+
+const messages = [
+  "It doesn't work",
+  "Not functional",
+  "This feature is unavailable",
+  "Try something else",
+  "No response detected"
+];
+
+function openModal() {
+  document.getElementById('modalOverlay').style.display = 'block';
+  document.querySelector('.centered-div').style.display = 'none';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').style.display = 'none';
+  document.querySelector('.centered-div').style.display = 'block';
+}
+
+function copyLink() {
+  if (blockCopy) return;
+
+  let input = document.getElementById('shareLink');
+  input.select();
+  document.execCommand('copy');
+
+  showPopup();
+
+  copyCount++;
+  if (copyCount >= 3) {
+    blockCopy = true;
+    setTimeout(() => {
+      blockCopy = false;
+      copyCount = 0;
+    }, 1000);
+  }
+}
+
+function showPopup() {
+  let popup = document.getElementById('popup');
+  if (timeoutId) clearTimeout(timeoutId);
+
+  popup.style.display = 'block';
+  timeoutId = setTimeout(() => {
+    popup.style.display = 'none';
+  }, 5000);
+}
+
+function showIconPopup(event) {
+  let existingPopup = document.querySelector('.icon-popup');
+  if (existingPopup) existingPopup.remove();
+
+  let newIndex;
+  do {
+    newIndex = Math.floor(Math.random() * messages.length);
+  } while (newIndex === lastMessageIndex);
+  lastMessageIndex = newIndex;
+
+  let popup = document.createElement('div');
+  popup.className = 'icon-popup';
+  popup.innerText = messages[newIndex];
+  event.target.appendChild(popup);
+  popup.style.display = 'block';
+
+  document.addEventListener('click', function closePopup(e) {
+    if (!popup.contains(e.target)) {
+      popup.remove();
+      document.removeEventListener('click', closePopup);
+    }
+  });
+}

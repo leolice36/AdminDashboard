@@ -54,6 +54,10 @@ body .container, body .container *{
   flex-direction: column;
 }
 
+.sidebar > .toggle-container #red {
+  cursor: pointer;
+}
+
 .sidebar > .menu {
   height: 100%;          
   background-color: transparent;
@@ -561,8 +565,7 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(157, 129, 46, 0.08);
-  backdrop-filter: blur(5px);
+  background-color: rgb(37 30 7 / 23%);
 }
 
 #profile-modal img{
@@ -634,6 +637,142 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   font-weight:normal;
 }
 
-.button-container.upload-container {
+.button-container.upload-container, 
+.button-container.share-container{
   cursor: pointer;
+}
+
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(37 30 7 / 23%);
+}
+.modal-overlay .modal {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  text-align: left;
+  z-index: 500;
+  height: 175px;
+  width: 340px;
+  border-left: 6px rgb(92, 0, 130) solid;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+.modal-overlay .modal .close-btn {
+  position: absolute;
+  top: -2px;
+  right: 5px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--blackish);
+  border: none;
+  border-radius: 5px;
+  font-size: 26px;
+
+}
+.modal-overlay .modal .close-btn:hover, 
+.modal-overlay .modal .close-btn:focus {
+color: rgb(92,0,130);
+text-decoration: none;
+
+}
+.modal-overlay .modal p {
+  font-weight: bold;
+}
+
+.modal-overlay .modal .icons {
+  display: flex;
+  justify-content:flex-start;
+  gap: 10px;
+  margin: 10px 0 15px 0;
+  width: 300px;
+}
+.modal-overlay .modal .icons .icon {
+  width: auto;
+  height: 28px;
+  background: transparent;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+}
+
+.modal-overlay .modal .icons .icon img {
+  position: relative;
+  z-index: -10;
+}
+
+.modal-overlay .modal .input-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  width: 300px;
+
+}
+.modal-overlay .modal .input-container input {
+  border: none;
+  padding: 10.5px 15px 9.5px 15px;
+  width: 203px;
+  height: 34px;
+  text-align: center;
+  background: transparent;
+  outline: none;
+  transition: box-shadow 0.2s;
+  border: var(--blackish) solid var(--standard-line-weight);
+  border-radius: 20px;
+  font-weight: bold;
+  color: #585858;
+}
+.modal-overlay .modal .input-container input:focus {
+  outline: 3px solid #FFD30F;
+  transition: outline 0.1s ease-in-out;
+  border: transparent;
+  
+}
+.modal-overlay .modal .input-container .copy-btn {
+  background: rgb(92, 0, 130);
+  color: white;
+  border: none;
+  padding: 0px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  height: 34px;
+  font-size: var(--font-smaller);
+  font-weight: bold;
+}
+#popup {
+  position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #ffe77a;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    font-size: var(--font-smaller);
+    z-index: 1000;
+    line-height: 25px;
+    font-weight: bold;
+}
+.icon-popup {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blackish);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  display: none;
 }
