@@ -54,7 +54,14 @@ body .container, body .container *{
   align-items: center;
   flex-direction: column;
 }
+.sidebar .toggle-container img {
+  opacity: 1;
+  transition: opacity 2s, color 2s;
+}
 
+.sidebar .toggle-container img.dark-mode{
+  opacity: 0;
+}
 .sidebar > .toggle-container #red {
   cursor: pointer;
 }
@@ -345,11 +352,28 @@ body .container, body .container *{
 }
 .container .header #head-logo svg {
   margin-right: 20px;
+  position: fixed;
+  transform: translate(-50%,-50%);
 }
+
+.container .header #head-logo .svg-container {
+  width: 42px;
+  height: 42px;
+}
+.container .header #head-logo .svg-container svg {
+  position: absolute;
+  top: 35px;
+  left: 41px;
+  transform: translate(-50%, -50%);
+}
+
+
+
 .container .header #dashboard {
   font-size: var(--font-h4);
   font-weight: bold;
   padding-top: 2px;
+  padding-left: 62px;
   color: var(--blackish);
 }
 .container .header #search {
@@ -406,6 +430,11 @@ display: flex;
   outline: 0px solid #FFD30F;
   transition: outline 0.1s ease-in-out;
 }
+
+.search-input::placeholder {
+  transition: color 2s, color 2s;
+}
+
 .clear-button {
   position: absolute;
   right: 5px;
@@ -427,6 +456,7 @@ display: flex;
 outline: 3px solid #FFD30F;
 transition: outline 0.1s ease-in-out;
 border: transparent;
+
 }
 .search-container .svg-one:has(+ * + *:focus) {
 opacity: 0;
@@ -456,9 +486,18 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   
 }
 
+.container .header #notif img.dark-mode {
+  height: 34px;
+  width: 35px;
+}
+
 .container.dark-mode, input.dark-mode {
-  background-color: black;
-  color: black;
+  background-color: #090212;
+  color: #090212;
+}
+
+input.dark-mode::placeholder {
+  color: var(--blackish);
 }
 
 .container .header #profile {
@@ -517,6 +556,11 @@ transform: rotate(720deg); /* Rotate 360 degrees */
   padding: 10px 20px 20px 20px;
   height: 180px;
   border-left: #FFD30F solid var(--standard-line-weight);
+  transition: border 2s, color 2s;
+}
+
+.projects-content .content-card.dark-mode {
+  border-left: #090212 solid var(--standard-line-weight);
 }
 
 .projects-content .content-card .card-header{
@@ -561,7 +605,6 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 .show { --column-1: var(--wide-side-panel-width); }
 .expand { width: var(--wide-side-panel-width);}
 #red.rotate { transform: rotate(180deg); transition: .5s; }
-
 
 
 
@@ -685,20 +728,6 @@ background-color: rgb(37 30 7 / 23%);
   color: rgb(92, 0, 130);
   text-decoration: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

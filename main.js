@@ -213,20 +213,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function toggleDarkMode() {
-  const containerChildren = document.querySelectorAll('.container, input');
+  const containerChildren = document.querySelectorAll(
+    '.container, input, .container .header #notif img, .projects-content .content-card, .sidebar > .toggle-container img');
   
+  const buttonImage = document.querySelector('.container .header #notif img');
+  const headLogo = document.querySelector(".container .header #head-logo .svg-container");
+  const svg = document.querySelector(".container .header #head-logo .svg-container svg");
+  console.log(svg);
+  const lightSvg = `
+        <svg class="svg-element" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.7442 21C10.7442 15.3359 15.3359 10.7442 21 10.7442C26.6641 10.7442 31.2558 15.3359 31.2558 21C31.2558 22.2359 31.0378 23.4177 30.6395 24.511C30.5704 24.7006 30.4343 24.9048 30.2171 25.1052L30.0597 25.2503C29.4722 25.7924 28.5899 25.8619 27.9247 25.4184C27.4429 25.0972 27.1535 24.5564 27.1535 23.9774V21C27.1535 17.6015 24.3985 14.8465 21 14.8465C17.6015 14.8465 14.8465 17.6015 14.8465 21C14.8465 24.3985 17.6015 27.1535 21 27.1535C22.3709 27.1535 23.637 26.7052 24.6599 25.9473C25.0158 26.7107 25.5773 27.3752 26.2993 27.8565C28.0899 29.0502 30.4649 28.8633 32.0467 27.404L32.204 27.2589C32.6925 26.8082 33.1331 26.2267 33.3927 25.5141C33.9065 24.104 34.186 22.583 34.186 21C34.186 13.7175 28.2825 7.81395 21 7.81395C13.7175 7.81395 7.81395 13.7175 7.81395 21C7.81395 28.2825 13.7175 34.186 21 34.186C21.8092 34.186 22.4651 33.5301 22.4651 32.7209C22.4651 31.9118 21.8092 31.2558 21 31.2558C15.3359 31.2558 10.7442 26.6641 10.7442 21ZM21 17.7767C22.7802 17.7767 24.2233 19.2198 24.2233 21C24.2233 22.7802 22.7802 24.2233 21 24.2233C19.2198 24.2233 17.7767 22.7802 17.7767 21C17.7767 19.2198 19.2198 17.7767 21 17.7767Z" fill="#5C008A"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M21 0C9.40202 0 0 9.40202 0 21C0 32.598 9.40202 42 21 42C32.598 42 42 32.598 42 21C42 9.40202 32.598 0 21 0ZM2.93023 21C2.93023 11.0203 11.0203 2.93023 21 2.93023C30.9797 2.93023 39.0698 11.0203 39.0698 21C39.0698 30.9797 30.9797 39.0698 21 39.0698C11.0203 39.0698 2.93023 30.9797 2.93023 21Z" fill="#FFD30F"/>
+        </svg>
+      `;
+  
+  const darkSvg = `
+            <svg class="svg-element" width="142" height="142" viewBox="0 0 142 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g filter="url(#filter0_ddd_198_694)">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M60.5581 71.186C60.5581 65.5219 65.1498 60.9302 70.8139 60.9302C76.4781 60.9302 81.0698 65.5219 81.0698 71.186C81.0698 72.422 80.8518 73.6037 80.4535 74.697C80.3844 74.8867 80.2483 75.0908 80.031 75.2912L79.8737 75.4364C79.2861 75.9785 78.4038 76.0479 77.7387 75.6045C77.2568 75.2833 76.9674 74.7425 76.9674 74.1634V71.186C76.9674 67.7876 74.2124 65.0326 70.8139 65.0326C67.4155 65.0326 64.6605 67.7876 64.6605 71.186C64.6605 74.5845 67.4155 77.3395 70.8139 77.3395C72.1848 77.3395 73.451 76.8913 74.4738 76.1333C74.8298 76.8968 75.3913 77.5612 76.1133 78.0426C77.9039 79.2363 80.2789 79.0493 81.8606 77.5901L82.0179 77.445C82.5065 76.9942 82.947 76.4128 83.2066 75.7001C83.7204 74.29 84 72.769 84 71.186C84 63.9036 78.0964 58 70.8139 58C63.5315 58 57.6279 63.9036 57.6279 71.186C57.6279 78.4685 63.5315 84.3721 70.8139 84.3721C71.6231 84.3721 72.2791 83.7161 72.2791 82.907C72.2791 82.0978 71.6231 81.4419 70.8139 81.4419C65.1498 81.4419 60.5581 76.8502 60.5581 71.186ZM70.8139 67.9628C72.5941 67.9628 74.0372 69.4059 74.0372 71.186C74.0372 72.9662 72.5941 74.4093 70.8139 74.4093C69.0338 74.4093 67.5907 72.9662 67.5907 71.186C67.5907 69.4059 69.0338 67.9628 70.8139 67.9628Z" fill="url(#paint0_linear_198_694)"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M71 50C59.402 50 50 59.402 50 71C50 82.598 59.402 92 71 92C82.598 92 92 82.598 92 71C92 59.402 82.598 50 71 50ZM52.9302 71C52.9302 61.0203 61.0203 52.9302 71 52.9302C80.9797 52.9302 89.0698 61.0203 89.0698 71C89.0698 80.9797 80.9797 89.0698 71 89.0698C61.0203 89.0698 52.9302 80.9797 52.9302 71Z" fill="url(#paint1_linear_198_694)"/>
+                </g>
+                <defs>
+                    <filter id="filter0_ddd_198_694" x="0" y="0" width="142" height="142" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset/>
+                        <feGaussianBlur stdDeviation="2.5"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.771584 0 0 0 0 0.630127 0 0 0 0 0 0 0 0 0.3 0"/>
+                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_198_694"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset/>
+                        <feGaussianBlur stdDeviation="7.5"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.771584 0 0 0 0 0.630127 0 0 0 0 0 0 0 0 0.3 0"/>
+                        <feBlend mode="normal" in2="effect1_dropShadow_198_694" result="effect2_dropShadow_198_694"/>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                        <feOffset/>
+                        <feGaussianBlur stdDeviation="25"/>
+                        <feComposite in2="hardAlpha" operator="out"/>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.771584 0 0 0 0 0.630127 0 0 0 0 0 0 0 0 0.3 0"/>
+                        <feBlend mode="normal" in2="effect2_dropShadow_198_694" result="effect3_dropShadow_198_694"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="effect3_dropShadow_198_694" result="shape"/>
+                    </filter>
+                    <linearGradient id="paint0_linear_198_694" x1="42.6296" y1="46.0185" x2="82.4445" y2="86.6296" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#CFABFF"/>
+                        <stop offset="0.616921" stop-color="#A057FF"/>
+                        <stop offset="1" stop-color="#3F2265"/>
+                    </linearGradient>
+                    <linearGradient id="paint1_linear_198_694" x1="47" y1="50" x2="85" y2="87.5" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FFEC8D"/>
+                        <stop offset="0.453571" stop-color="#D7B300"/>
+                        <stop offset="0.820441" stop-color="#B89900"/>
+                        <stop offset="1" stop-color="#766300"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        `;
+        
+
+  if (buttonImage.classList.contains("dark-mode")){
+    buttonImage.src = 'images/header/light.svg';
+    buttonImage.style.animation = 'modeToggleAnimateDark 2s ease-in-out forwards';
+    headLogo.innerHTML = lightSvg;
+    
+  }
+  else {
+    buttonImage.src = 'images/night/moon.svg';
+    buttonImage.style.animation = 'modeToggleAnimateLight 2s ease-out forwards';
+    headLogo.innerHTML = darkSvg;
+  }
+
   // Loop through all direct children of .container
   containerChildren.forEach(child => {
       child.classList.toggle("dark-mode");
   });
   
-  const button = document.getElementById("modeToggle");
 
-  // if (Array.from(containerChildren).some(child => child.classList.contains("dark-mode"))) {
-  //     button.textContent = "Light Mode";
-  // } else {
-  //     button.textContent = "Dark Mode";
-  // }
 }
 
 const menuItems = document.querySelectorAll('.menu-item');
@@ -468,6 +531,8 @@ function showIconPopup(event) {
   });
 }
 
+  
+
 document.addEventListener("DOMContentLoaded", () => {
   function generateCards() {
     const cardContainer = document.querySelector(".projects-content");
@@ -479,6 +544,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // Create card div
           const card = document.createElement("div");
           card.className = "content-card";
+          card.draggable ='true';
           
           // Create title
           const title = document.createElement("div");
@@ -502,7 +568,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch(error => console.error("Error loading projects.json:", error));
   }
 
-  generateCards(); // Run function after DOM is loaded
+  generateCards()
+
 });
 
 const nopeMessages = [
@@ -516,7 +583,6 @@ const nopeMessages = [
 
 function nopeCantEdit() {
     const notification = document.getElementById('upload-notification');
-    console.log('shit')
 
     let newIndex;
     do {
@@ -559,7 +625,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const createCard = (title, content) => {
       const card = document.createElement("div")
       card.classList.add("content-card")
-      card.innerHTML = `<div class = 'card-header'>${title}</div><div class = 'card-content'>${content}</div>`
+      card.innerHTML = `<div class = 'card-header'>${title}</div><div class = 'card-content' draggable="true">${content}</div>`
       const cardHeader = card.querySelector('.card-header')
       cardHeader.addEventListener("click", () => editCard(card))
       return card
@@ -604,4 +670,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alert("Please fill out both fields.")
       }
     })
+    
   })
+
+  
