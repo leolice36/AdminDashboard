@@ -489,6 +489,7 @@ transform: rotate(720deg); /* Rotate 360 degrees */
 .container .header #notif img.dark-mode {
   height: 34px;
   width: 35px;
+
 }
 
 .container.dark-mode, input.dark-mode {

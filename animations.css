@@ -16,3 +16,34 @@
     }
 }
 
+
+@keyframes bellRing {
+    0% {
+      transform: rotate(0deg); /* Start at 0 degrees */
+    }
+    10% {
+      transform: rotate(-40deg); /* Start at 0 degrees */
+    }
+    20% {
+      transform: rotate(40deg); /* Rotate 360 degrees */
+    }
+    35% {
+      transform: rotate(-30deg); /* Rotate 360 degrees */
+    }
+    50% {
+      transform: rotate(15deg); /* Rotate 360 degrees */
+    }
+    70% {
+      transform: rotate(-10deg); /* Rotate 360 degrees */
+    }
+    100% {
+      transform: rotate(0deg); /* Rotate 360 degrees */
+    }
+  }
+
+  @keyframes sky-jump {
+    0% { transform: translateY(0); }
+    90% { transform: translateY(20px); }
+    99% { transform: translateY(-500px); }
+    100% { transform: translateY(0); }
+  }

@@ -673,4 +673,24 @@ document.addEventListener("DOMContentLoaded", () => {
     
   })
 
-  
+function openWindowWithDelay(url, delay) {
+  setTimeout(() => {
+    window.open(url, "_blank");
+  }, delay);
+}
+
+
+function animateElement(event, animationName, duration = "1s", easing = "ease-in-out", fillMode = "forwards") {
+  const element = event.target; // Get the clicked element
+
+  if (element.classList.contains("clicked")) {
+    element.classList.remove("clicked");
+    element.style.animation = "none"; // Reset animation
+    setTimeout(() => {
+      element.style.animation = `${animationName} ${duration} ${easing} ${fillMode}`;
+    }, 10);
+  } else {
+    element.classList.add("clicked");
+    element.style.animation = `${animationName} ${duration} ${easing} ${fillMode}`;
+  }
+}
