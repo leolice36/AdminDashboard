@@ -283,7 +283,21 @@ body .container, body .container *{
   border-bottom: var(--standard-line-weight) solid var(--blackish);
   padding-bottom: 15px;
   margin-bottom: 20px;
-  cursor: pointer;
+  transition: color 0.1s;
+}
+
+.announce-content .child * {
+  max-height: 100px;
+  transition: 
+    color 0.1s, 
+    max-height 0.5s ease-in-out,
+    border 0.5s ease-in-out,
+    padding 0.5s ease-in-out;
+}
+
+.announce-content .child.hover-on:hover {
+  color: rgb(92, 0, 130);
+  border-left: #FFD30F solid 0px;
 }
 
 .announce-content .title {
@@ -308,6 +322,18 @@ body .container, body .container *{
   max-height: 500px;
 }
 
+.announce-content .content.expanded:hover {
+  color: var(--blackish);
+}
+
+.announce-content .child:has(.expanded) {
+  border-bottom: #FFD30F solid var(--standard-line-weight);
+}
+
+.announce-content .title:has(+ .expanded){
+  border-left: #FFD30F solid var(--standard-line-weight);
+  padding-left: 20px;
+}
 
 .trend-content .trendProfile {
   display: flex;
