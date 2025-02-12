@@ -363,6 +363,30 @@ function expandAnnounce() {
   });
 }
 
+
+function createProfileModal() {
+    if (document.querySelector("#profile-modal")) return; // Prevent duplicate modals
+    
+    const modalContainer = document.createElement("div");
+    modalContainer.classList.add("modal");
+    modalContainer.id = 'profile-modal';
+    modalContainer.innerHTML = `
+              <div class="modal-content">
+                <span class="close" id="close">&times;</span>
+                <img src="images/header/user-circle.svg" alt="profile icon">
+                <h2 id="modal-username"></h2>
+                <p id="modal-age"></p>
+                <p id="modal-location"></p>
+                <p id="modal-email"></p>
+              </div>
+    `;
+
+    document.body.appendChild(modalContainer);
+}
+
+
+
+
 function addClickFunctionality() {
     const modal = document.getElementById('profile-modal');
     const closeModal = document.getElementById('close');
@@ -430,11 +454,13 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       // Add click event listeners to announce-content children
       await expandAnnounce();
+      //Add cursor pointer to expandable divs and color change on hover 
+      await applyCursorChange()
 
+      await createProfileModal();
       //Add event listener to user profiles 
       await addClickFunctionality();
 
-      await applyCursorChange()
 
   } catch (error) {
       console.error('Error in sequence:', error);
@@ -534,7 +560,7 @@ function showIconPopup(event) {
 }
 
   
-
+//create cards
 document.addEventListener("DOMContentLoaded", () => {
   function generateCards() {
     const cardContainer = document.querySelector(".projects-content");
