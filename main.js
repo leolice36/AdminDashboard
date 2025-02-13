@@ -416,8 +416,9 @@ function addClickFunctionality() {
                 modalAge.textContent = `Age: ${user.profileInfo.age}`;
                 modalLocation.textContent = `Location: ${user.profileInfo.location}`;
                 modalEmail.textContent = `Email: ${user.profileInfo.email}`;
-                
+                modalContent.classList.remove('closed')
                 modal.style.display = 'block';
+
             } catch (error) {
                 console.error('Error fetching user data:', error);
             }
@@ -426,8 +427,13 @@ function addClickFunctionality() {
 
     // Close modal functionality
     function closeProfileModal(){
-      modal.style.display = 'none';
+      modalContent.classList.add('closed');
+      setTimeout( () => {
+        modal.style.display = 'none';
         center.style.display = 'block';
+      },800)
+      
+        
     }
 
     closeModal.addEventListener('click', () => {
