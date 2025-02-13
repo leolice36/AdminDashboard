@@ -424,17 +424,20 @@ function addClickFunctionality() {
     });
 
     // Close modal functionality
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
+    function closeProfileModal(){
+      modal.style.display = 'none';
         center.style.display = 'block';
+    }
+
+    closeModal.addEventListener('click', () => {
+        closeProfileModal()
     });
 
     window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-            center.style.display = 'block';
-        }
-    });
+      if (event.target === modal) {
+        closeProfileModal()
+      }
+  });
 }
 
 // Main right side function sequence
