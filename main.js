@@ -395,6 +395,7 @@ function addClickFunctionality() {
     const modalLocation = document.getElementById('modal-location');
     const modalEmail = document.getElementById('modal-email');
     const center = document.querySelector('.centered-div')
+    const modalContent = document.querySelector('.modal-content')
     // Add click event to all child divs
     document.querySelectorAll('.trendProfile').forEach((profile) => {
         profile.addEventListener('click', async () => {
