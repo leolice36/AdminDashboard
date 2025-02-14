@@ -648,6 +648,7 @@ function nopeCantEdit() {
 document.addEventListener("DOMContentLoaded", () => {
     const modalOpenBtn = document.getElementById("createModal")
     const cardEditModal = document.querySelector(".card-edit-modal-container")
+    const cardEditModalActual = document.querySelector(".card-edit-modal")
     const modalSubmitBtn = document.getElementById("submitCard")
     const modalCloseBtn = document.getElementById("closeModal")
     const cardDisplayArea = document.querySelector(".projects-content")
