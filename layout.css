@@ -343,9 +343,17 @@ body .container, body .container *{
   margin-bottom: 15px;
   font-size: var(--font-smaller);
   cursor: pointer;
+  transition: color 0.1s;
 }
 
+.trend-content .trendProfile:hover {
+  color: rgb(92,0,130);
+  font-weight: bold;
+}
 
+.trend-content .trendProfile .profileName {
+  transition: color 0.1s, font-weight 0.1s;
+}
 
 .container .header {
   background-color: transparent;

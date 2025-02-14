@@ -102,9 +102,16 @@ function createTrendContent({ profileName, imgSrc }) {
     div.className = 'trendProfile';
 
     // Create the image element and set its source
-    const img = document.createElement('img');
-    img.src = imgSrc; // Set the image source
-    img.alt = 'Profile Image'; // Optionally add an alt attribute for accessibility
+    const img = document.createElement('div');
+    // img.src = imgSrc; // Set the image source
+    // img.alt = 'Profile Image'; // Optionally add an alt attribute for accessibility
+    img.style.width = "34px";
+    img.style.height = "34px";
+    img.style.backgroundImage = `url('${imgSrc}')`;
+    img.style.backgroundSize = "cover";
+    img.style.backgroundPosition = "center";
+
+
 
     // Create the profile name div
     const contentDiv = document.createElement('div');
@@ -716,3 +723,4 @@ function openWindowWithDelay(url, delay) {
     window.open(url, "_blank");
   }, delay);
 }
+
