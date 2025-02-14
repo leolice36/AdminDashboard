@@ -105,11 +105,12 @@ function createTrendContent({ profileName, imgSrc }) {
     const img = document.createElement('div');
     // img.src = imgSrc; // Set the image source
     // img.alt = 'Profile Image'; // Optionally add an alt attribute for accessibility
-    img.style.width = "34px";
-    img.style.height = "34px";
-    img.style.backgroundImage = `url('${imgSrc}')`;
-    img.style.backgroundSize = "cover";
-    img.style.backgroundPosition = "center";
+    img.classList.add('profile-image') 
+    // img.style.width = "34px";
+    // img.style.height = "34px";
+    // img.style.backgroundImage = `url('${imgSrc}')`;
+    // img.style.backgroundSize = "cover";
+    // img.style.backgroundPosition = "center";
 
 
 

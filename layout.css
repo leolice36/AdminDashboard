@@ -354,6 +354,17 @@ body .container, body .container *{
 .trend-content .trendProfile .profileName {
   transition: color 0.1s, font-weight 0.1s;
 }
+.trend-content .trendProfile .profile-image {
+  width: 34px;
+  height: 34px;
+  background-image: url(images/rightside/trending-profile.svg);
+  background-size: cover;
+  background-position: center;
+  transition: background-image 0.2s;
+}
+.trend-content .trendProfile:hover .profile-image {
+  background-image: url(images/violet/trending/user.svg);
+}
 
 .container .header {
   background-color: transparent;
