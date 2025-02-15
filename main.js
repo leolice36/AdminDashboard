@@ -394,7 +394,7 @@ function createProfileModal() {
 
 
 
-
+const center = document.querySelector('.centered-div')
 function addClickFunctionality() {
     const modal = document.getElementById('profile-modal');
     const closeModal = document.getElementById('close');
@@ -402,7 +402,7 @@ function addClickFunctionality() {
     const modalAge = document.getElementById('modal-age');
     const modalLocation = document.getElementById('modal-location');
     const modalEmail = document.getElementById('modal-email');
-    const center = document.querySelector('.centered-div')
+    // const center = document.querySelector('.centered-div')
     const modalContent = document.querySelector('.modal-content')
     // Add click event to all child divs
     document.querySelectorAll('.trendProfile').forEach((profile) => {
@@ -434,23 +434,23 @@ function addClickFunctionality() {
     });
 
     // Close modal functionality
-    function closeProfileModal(){
+    function closeProfileModal(time){
       modalContent.classList.add('closed');
       setTimeout( () => {
         modal.style.display = 'none';
         center.style.display = 'block';
-      },800)
+      },time)
       
         
     }
 
     closeModal.addEventListener('click', () => {
-        closeProfileModal()
+        closeProfileModal(800)
     });
 
     window.addEventListener('click', (event) => {
       if (event.target === modal) {
-        closeProfileModal()
+        closeProfileModal(800)
       }
   });
 }
@@ -726,3 +726,14 @@ function openWindowWithDelay(url, delay) {
   }, delay);
 }
 
+
+
+function closeModalOthers(targetModalContent,targetModal,timeDelay){
+  const content = document.querySelector(`${targetModalContent}`)
+  const modal = document.querySelector(`${targetModal}`)
+  modalContent.classList.add('closed');
+  setTimeout( () => {
+    modal.style.display = 'none';
+    center.style.display = 'block';
+  },timeDelay)
+}

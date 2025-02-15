@@ -687,11 +687,9 @@ background-color: rgb(37 30 7 / 23%);
 
 .card-edit-modal {
   position: fixed;
-  top: -100px;
-  left: 500px;
-  /* transform: translate(-50%, -50%); */
   background-color: #fff;
-  margin: 15% auto;
+  margin-left: 78px;
+  margin-top: calc((100vh + 69px)/2 - 201px);
   padding: 40px 24px 20px 30px;
   width: 400px;
   font-size: var(--font-smaller);
@@ -802,7 +800,8 @@ background-color: rgb(37 30 7 / 23%);
 
 .modal-content {
   background-color: #fff;
-  margin: 16% auto;
+  margin-left: 78px;
+  margin-top: calc((100vh + 69px)/2 - 117px);
   padding: 20px;
   width: 400px;
   font-size: var(--font-smaller);
@@ -814,7 +813,7 @@ background-color: rgb(37 30 7 / 23%);
 }
 
 .modal-content.closed {
-  animation: profileAnimateClose 0.8s ease-in-out;
+  /* animation: profileAnimateClose 0.8s ease-in-out; */
 }
 
 .modal-content #modal-username {
@@ -938,11 +937,11 @@ background-color: rgb(37 30 7 / 23%);
 .modal-overlay .modal {
   display: block;
   position: fixed;
-  top: 200px;
-  left: 800px;
   background: white;
   padding: 20px;
   text-align: left;
+  margin-left: 78px;
+  margin-top: calc((100vh + 69px)/2 - 84.5px);
   z-index: 500;
   height: 169px;
   width: 331px;
