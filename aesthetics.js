@@ -30,3 +30,122 @@ function applyCursorChange(){
     }
     });
 }
+
+// New: Added configuration object for easy customization
+const config = {
+  numFragments: 6,
+  fragmentHeight: 3,
+  fragmentWidth: 10,
+  fragmentBorderRadius: 6,
+  fragmentBorderRadiusUnit: "px",
+  explosionRadius: 25,
+  animationDuration: 250,
+  timingFunction: 'cubic-bezier(0, 0, 0, 0.98)',
+  safetyTimeout: 1000
+};
+
+// Modified: Improved createBurstDivs function
+function createBurstDivs() {
+  const container = document.createElement('div');
+  container.classList.add('animation-container');
+  
+  const burst = document.createElement('div');
+  burst.classList.add('burst');
+  
+  for (let i = 0; i < config.numFragments; i++) {
+    const fragment = document.createElement('div');
+    fragment.classList.add('fragment');
+    fragment.style.setProperty('--rotation', `${360 / config.numFragments * i}deg`);
+    burst.appendChild(fragment);
+  }
+  
+  container.appendChild(burst);
+  return container;
+}
+
+// New: Added cleanup function
+function cleanupAnimation(container) {
+  if (container && container.parentElement) {
+    container.parentElement.removeChild(container);
+  }
+}
+
+// Modified: Improved clickEffect function
+function clickEffect(e) {
+  // New: Check if there's an existing animation
+  const existingContainer = document.querySelector('.animation-container');
+  if (existingContainer) {
+    cleanupAnimation(existingContainer);
+  }
+
+  const container = createBurstDivs();
+  document.body.appendChild(container);
+
+  // Modified: Use pageX and pageY, and center the burst
+  container.style.top = `${e.pageY - config.fragmentHeight / 2}px`;
+  container.style.left = `${e.pageX - config.fragmentWidth / 2}px`;
+
+  const fragment = container.querySelector('.fragment');
+  
+  // New: Use Promise for better control flow
+  const animationEndPromise = new Promise(resolve => {
+    fragment.addEventListener('animationend', resolve, { once: true });
+  });
+
+  // New: Race between animation completion and safety timeout
+  Promise.race([
+    animationEndPromise,
+    new Promise(resolve => setTimeout(resolve, config.safetyTimeout))
+  ]).then(() => cleanupAnimation(container));
+}
+
+// New: Debounce function to limit click event firing
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Modified: Use debounced click handler
+document.addEventListener('click', debounce(clickEffect, 50));
+
+// New: Add styles programmatically
+const style = document.createElement('style');
+style.textContent = `
+  .animation-container {
+    position: fixed;
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  .burst {
+    position: relative;
+  }
+
+  .burst .fragment {
+    position: absolute;
+    background: #000000;
+    width: ${config.fragmentHeight}px;
+    height: ${config.fragmentWidth}px;
+    border-radius: ${config.fragmentBorderRadius}${config.fragmentBorderRadiusUnit} ;
+    animation: move ${config.animationDuration}ms ${config.timingFunction};
+  }
+
+  @keyframes move {
+    0% {
+      transform: rotate(var(--rotation)) translate(0, 0);
+    }
+    100% {
+      transform: rotate(var(--rotation)) translate(0, ${-config.explosionRadius}px);
+    }
+  }
+`;
+document.head.appendChild(style);
+
+console.log('Burst animation script loaded. Click anywhere to see the effect!');
