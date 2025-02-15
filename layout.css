@@ -1140,3 +1140,12 @@ text-decoration: none;
 
 
 
+::selection {
+  background-color: #FFD30F; /* Change highlight color */
+  color: black; /* Change text color */
+}
+
+.purple::selection {
+  background-color: rgb(92, 0, 130); /* Change highlight color */
+  color: white; /* Change text color */
+}
