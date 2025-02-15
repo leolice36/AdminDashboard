@@ -600,10 +600,61 @@ input.dark-mode::placeholder {
 
   color: var(--blackish);
   padding: 10px 20px 20px 20px;
+  margin-left: var(--standard-line-weight);
   height: 180px;
-  border-left: #FFD30F solid var(--standard-line-weight);
+  border-left: none;
   transition: border 2s, color 2s;
+  position: relative;
+  overflow: hidden;
 }
+
+.projects-content .content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--standard-line-weight); /* Matches the initial left border width */
+  height: 100%;
+  background: #FFD30F; /* Initial blue border color */
+  transition: transform 0.8s ease-out, 
+              transition-delay 0.1s; /* Delays reappearing animation */
+  transform-origin: bottom;
+  border-radius: 20px;
+}
+
+.projects-content .content-card:hover::before {
+  transition: transform 0.2s ease-out, 
+  transition-delay 0.2s;
+  transform: scaleY(0);
+  transition-delay: 0s; /* No delay when disappearing */
+}
+
+/* Adding hover-out transitions */
+.projects-content .content-card:not(:hover)::before {
+  transition-delay: 0.4s; /* Waits for the red border to disappear before reappearing */
+}
+
+.projects-content .content-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(1.5 * var(--standard-line-weight)); 
+  height: 100%;
+  background: rgb(92, 0, 130); 
+  transition: transform 0.2s ease-in-out, 
+              transition-delay 0.3s; /* Delays reappearing animation */
+  transform-origin: bottom;
+   transform: scaleY(0);
+   border-radius: 20px;
+}
+
+.projects-content .content-card:hover::after {
+  transform: scaleY(1);
+  transition-delay: 0.3s; /* Starts after the blue border disappears */
+}
+
+
 
 .projects-content .content-card.dark-mode {
   border-left: #090212 solid var(--standard-line-weight);
@@ -615,6 +666,12 @@ input.dark-mode::placeholder {
   line-height: 28px;
   width: fit-content;
   cursor: pointer;
+  transition: color 0.2s;
+}
+
+.projects-content .content-card .card-header:hover {
+  color: rgb(92, 0, 130);
+  font-weight: bolder;
 }
 
 .projects-content .content-card .card-content {
