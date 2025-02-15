@@ -872,7 +872,7 @@ background-color: rgb(37 30 7 / 23%);
 .button-container.share-container,
 .button-container.create-container{
   cursor: pointer;
-  transition: color 0.1s;
+  transition: color 0.2s, background-image 0.2;
 }
 
 .button-container .create-img,
@@ -906,11 +906,15 @@ background-color: rgb(37 30 7 / 23%);
   background-image: url(images/rightside/upload.svg);
 }
 
+.button-container:hover span {
+
+}
 .button-container:hover .create-img {
   background-image: url(images/violet/buttons/create.svg);
 }
 
 .button-container:hover  .share-img {
+  
   background-image: url(images/violet/buttons/share.svg);
 }
 
