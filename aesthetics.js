@@ -149,3 +149,87 @@ style.textContent = `
 document.head.appendChild(style);
 
 console.log('Burst animation script loaded. Click anywhere to see the effect!');
+
+
+
+function initializeArrowMenu() {
+  const sidebar = document.querySelector('.sidebar');
+
+
+  const arrow = document.getElementById('red');
+  const topRect = document.querySelector('.tog-div-top');
+
+  const bottomRect = document.querySelector('.tog-div-bot');
+  const menu = document.getElementById('menu');
+  const menuItems = document.querySelectorAll('.menu-item');
+  const arrowHeight = arrow.offsetHeight;
+  const toggleContainer = document.querySelector('.toggle-container');
+  const viewportHeight = toggleContainer.getBoundingClientRect().height;
+  console.log({viewportHeight})
+  let snapping = false;
+
+  
+
+  function updatePositions(y) {
+    if (!sidebar.classList.contains('expand')){
+      return
+    }
+    const constrainedY = Math.max(48, Math.min(y-84, viewportHeight- 48 - arrowHeight));
+    arrow.style.top = `${constrainedY}px`;
+    topRect.style.height = `${constrainedY - 40}px`;
+    bottomRect.style.top = `${constrainedY + arrowHeight +20}px`;
+    bottomRect.style.height = `${viewportHeight - (constrainedY + arrowHeight + 40)}px`;
+    
+  }
+
+  function handleMenuMouseMove(event) {
+    if (snapping) return;
+    updatePositions(event.clientY);
+  }
+
+  function handleMenuItemMouseMove(event, item) {
+    const itemRect = item.getBoundingClientRect();
+    const itemHeight = itemRect.height;
+    const middlepartHeight = itemHeight * 0.9;
+    const middleStart = itemRect.top + (itemHeight / 2) - (middlepartHeight / 2);
+    const middleEnd = middleStart + middlepartHeight;
+    const mouseY = event.clientY;
+
+    if (mouseY >= middleStart && mouseY <= middleEnd) {
+      const itemCenter = itemRect.top + itemRect.height / 2;
+      snapping = true;
+      updatePositions(itemCenter - arrow.offsetHeight / 2 + 12);
+    } else {
+      snapping = false;
+    }
+  }
+
+  function handleMenuMouseLeave() {
+    snapping = false;
+    setArrowToCenter();
+  }
+
+  function setArrowToCenter() {
+    const arrowPosition = (menu.offsetHeight / 2) - (arrowHeight / 2);
+    const constrainedY = Math.max(40, Math.min(arrowPosition-84, viewportHeight- 40 - arrowHeight - 84));
+    arrow.style.top = `${constrainedY}px`;
+    topRect.style.height = `${constrainedY - 40}px`;
+    bottomRect.style.top = `${constrainedY + arrowHeight + 20}px`;
+    bottomRect.style.height = `${viewportHeight - (constrainedY + arrowHeight + 40)}px`;
+    ;
+  }
+
+  menu.addEventListener('mousemove', handleMenuMouseMove);
+  menu.addEventListener('mouseleave', handleMenuMouseLeave);
+
+  menuItems.forEach((item) => {
+    item.addEventListener('mousemove', (event) => handleMenuItemMouseMove(event, item));
+    item.addEventListener('mouseleave', () => { snapping = false; });
+  });
+
+  // Set initial arrow position
+  setArrowToCenter();
+}
+
+// Call the function to initialize the arrow menu behavior
+// initializeArrowMenu();

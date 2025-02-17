@@ -49,21 +49,28 @@ body .container, body .container *{
   min-width: 26px;
   height: 100%;          
   background-color: rgba(255, 255, 255, 0); 
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
+  position: relative;
+  display: inline-block;
 }
-.sidebar .toggle-container img {
+.sidebar .toggle-container #red {
+  position: absolute;
   opacity: 1;
   transition: opacity 2s, color 2s;
+  background-image: url(images/sidebar/open-arrow.svg);
+  left: calc(50% - calc(var(--standard-gap)/2)); /* Center the arrow horizontally (10px is half the arrow size) */
+  width: var(--standard-gap);
+  height: var(--standard-gap);
+  background-position: center;
+  background-size: cover;
+  cursor: pointer;
 }
 
-.sidebar .toggle-container img.dark-mode{
+.sidebar .toggle-container #red.dark-mode{
   opacity: 0;
-}
-.sidebar > .toggle-container #red {
-  cursor: pointer;
 }
 
 .sidebar > .menu {
@@ -202,12 +209,14 @@ body .container, body .container *{
 }
 
 .toggle-container .tog-div-top {
-  margin-top: var(--standard-gap);
-  margin-bottom: 5px;
+  position: absolute;
+  top: var(--standard-gap);
+  left: calc(50% - var(--standard-line-weight));
 }
 .toggle-container .tog-div-bot {
-  margin-top: 5px;
-  margin-bottom: var(--standard-gap);
+  position: absolute;
+  bottom: var(--standard-gap);
+  left: calc(50% - var(--standard-line-weight));
 }
 
 .menu .top-menu #menu-divider{

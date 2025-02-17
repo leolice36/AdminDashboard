@@ -479,6 +479,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       //Add event listener to user profiles 
       await addClickFunctionality();
 
+      await initializeArrowMenu();
+
 
   } catch (error) {
       console.error('Error in sequence:', error);
