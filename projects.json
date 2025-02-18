@@ -1,9 +1,9 @@
 [
-    { "title": "Adventure Awaits", "body": "Explore the world and find hidden treasures." },
-    { "title": "Mystical Forest", "body": "Discover secrets among the towering trees." },
-    { "title": "Galactic Odyssey", "body": "Travel the stars and uncover cosmic mysteries." },
-    { "title": "Ancient Ruins", "body": "Walk through history in ancient lands." },
-    { "title": "Urban Jungle", "body": "Navigate the bustling city streets." },
-    { "title": "Urban Jungle", "body": "Navigate the bustling city streets." }
+    { "title": "Try Everything, It's fun", "body": "Everything here works in some way." },
+    { "title": "This Took Me Like 2 Months to Make", "body": "This is not really what the exercise was meant to do but I learned a lot. I learned animation and transitions, pseudo elements, promises and async functions and why you might need them." },
+    { "title": "The Code is a Garbage Dump", "body": "This  took me so long and the file is so big that I encountered my first Git problem. Making a code base like this makes you appreciate the importance of planning and using best practices when it comes to naming." },
+    { "title": "Yes, I used AI", "body": "Seems like cheating but its not as easy as you think, I couldn't really just tell it to make a feature and do it, I mostly tell it how to. It just does the grunt work and I have to piece it together, which is NOT easy." },
+    { "title": "This pure Vanilla", "body": "I didn't want to use anything that I can't understand so I only used stuff that I could learn immediately." },
+    { "title": "I used Figma", "body": "I learned it in a day, you should give it a try. I used Photoshop a lot so its quick for me to understand so if you have a similar background, maybe give it a try. Its free." }
   ]
   

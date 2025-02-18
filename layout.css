@@ -68,7 +68,7 @@ body .container, body .container *{
   transform-origin: 40% 50%;
 }
 
-.sidebar .toggle-container #red.dark-mode{
+.sidebar .toggle-container #red.dark-mode {
   opacity: 0;
 }
 
@@ -735,9 +735,14 @@ input.dark-mode::placeholder {
   height: 100%;
   background: #FFD30F; /* Initial blue border color */
   transition: transform 0.8s ease-out, 
-              transition-delay 0.1s; /* Delays reappearing animation */
+              transition-delay 0.1s,
+              color 2s; /* Delays reappearing animation */
   transform-origin: bottom;
   border-radius: 20px;
+}
+
+.projects-content .content-card.dark-mode::before {
+  background: var(--blackish);
 }
 
 .projects-content .content-card:hover::before {
@@ -774,9 +779,7 @@ input.dark-mode::placeholder {
 
 
 
-.projects-content .content-card.dark-mode {
-  border-left: #090212 solid var(--standard-line-weight);
-}
+
 
 .projects-content .content-card .card-header{
   font-weight: 600;
