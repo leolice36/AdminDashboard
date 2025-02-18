@@ -88,11 +88,30 @@ body .container, body .container *{
   padding-left: 0px;
   font-size: var(--font-smaller);
   cursor: pointer;
-  transition: background-color 0.5s;
+  transition: color 0.2s;
+}
+.expand .menu .menu-item span, .expand .menu .menu-item.active span, .expand .menu .menu-item:hover span {
+  transition: color 0.2s;
+} 
+
+.expand .menu .menu-item.active, .expand .menu .menu-item.active:hover {
+    padding-left: calc(20px - var(--standard-line-weight));
+    border-left: solid #FFD30F var(--standard-line-weight) ;
+    font-weight: bold;
+}
+.sidebar .menu .menu-item.active{
+animation: vertical-bounce 0.8s ease-out;
+}
+.sidebar .menu .menu-item.active, .sidebar .menu .menu-item.active:hover span {
+  color: var(--blackish);
+  font-weight: bold;
 }
 
-.menu .menu-item:hover, .menu .menu-item.active {
-  background-color:#FFD30F;
+.expand .menu .menu-item:hover {
+  padding-left: calc(20px - var(--standard-line-weight));
+  border-left: solid rgb(92, 0, 130) var(--standard-line-weight) ;
+  font-weight: bold;
+  color: rgb(92, 0, 130);
 }
 
 .menu .top-menu .icons, .menu .bottom-menu .icons {
@@ -103,33 +122,85 @@ body .container, body .container *{
   display: inline-block;
 }
 
+.menu .top-menu .menu-item.active .icons, .menu .bottom-menu .menu-item.active .icons {
+  min-width: 22px;
+  height: 25px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 0px 1px;
+}
+
+
 .menu .top-menu #home-icon {
-  background-image: url('images/sidebar/home.svg');
-}
-.menu .top-menu #profile-icon {
-  background-image: url('images/sidebar/profile.svg');
-}
-.menu .top-menu #messages-icon {
-  background-image: url('images/sidebar/messages.svg');
-}
-.menu .top-menu #history-icon {
-  background-image: url('images/sidebar/history.svg');
-}
-.menu .top-menu #tasks-icon {
-  background-image: url('images/sidebar/tasks.svg');
-}
-.menu .top-menu #communities-icon {
-  background-image: url('images/sidebar/communities.svg');
-}
-.menu .bottom-menu #settings-icon {
-  background-image: url('images/sidebar/settings.svg');
-}
-.menu .bottom-menu #support-icon {
-  background-image: url('images/sidebar/support.svg');
-}
-.menu .bottom-menu #privacy-icon {
-  background-image: url('images/sidebar/privacy.svg');
-}
+    background-image: url('images/sidebar/home.svg');
+  }
+  .menu .top-menu .menu-item.active #home-icon {
+    background-image: url('images/violet/sidebar/home.svg');
+  }
+
+  .menu .top-menu #profile-icon {
+    background-image: url('images/sidebar/profile.svg');
+  }
+  .menu .top-menu .menu-item.active #profile-icon {
+    background-image: url('images/violet/sidebar/profile.svg');
+  }
+
+  .menu .top-menu #messages-icon {
+    background-image: url('images/sidebar/messages.svg');
+  }
+  .menu .top-menu .menu-item.active #messages-icon {
+    background-image: url('images/violet/sidebar/messages.svg');
+  }
+
+  .menu .top-menu #history-icon {
+    background-image: url('images/sidebar/history.svg');
+  }
+  .menu .top-menu .menu-item.active #history-icon {
+    background-image: url('images/violet/sidebar/history.svg');
+  }
+
+  .menu .top-menu #tasks-icon {
+    background-image: url('images/sidebar/tasks.svg');
+  }
+  .menu .top-menu .menu-item.active #tasks-icon {
+    background-image: url('images/violet/sidebar/tasks.svg');
+    min-width: 20px;
+    height: 25px;
+    margin: 0px 2px;
+  }
+
+  .menu .top-menu #communities-icon {
+    background-image: url('images/sidebar/communities.svg');
+  }
+  .menu .top-menu .menu-item.active #communities-icon {
+    background-image: url('images/violet/sidebar/communities.svg');
+    min-width: 24px;
+    height: 25px;
+    margin-bottom: 0.5px;
+  }
+
+  .menu .bottom-menu #settings-icon {
+    background-image: url('images/sidebar/settings.svg');
+  }
+  .menu .bottom-menu .menu-item.active #settings-icon {
+    background-image: url('images/violet/sidebar/settings.svg');
+  }
+
+  .menu .bottom-menu #support-icon {
+    background-image: url('images/sidebar/support.svg');
+  }
+  .menu .bottom-menu .menu-item.active #support-icon {
+    background-image: url('images/violet/sidebar/support.svg');
+  }
+
+  .menu .bottom-menu #privacy-icon {
+    background-image: url('images/sidebar/privacy.svg');
+  }
+  .menu .bottom-menu .menu-item.active #privacy-icon {
+    background-image: url('images/violet/sidebar/privacy.svg');
+  }  
 
 
 .dynamic-content {
@@ -215,6 +286,8 @@ body .container, body .container *{
 .expand .menu .menu-item{
   padding-left: 20px;
 }
+
+
 .menu .top-menu,.bottom-menu {
   display: flex;
   flex-direction: column;

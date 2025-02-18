@@ -81,3 +81,13 @@
     50% { transform: scaleY(1.2) translateY(-500px) translateX(-300px) ; }
     100% { transform: translateY(1000px) translateX(-700px); }
   }
+
+  @keyframes vertical-bounce {
+    0% { transform: translateY(0); }
+    30% { transform: translateY(-15px); }
+    50% { transform: translateY(0); }
+    70% { transform: translateY(-7px); }
+    100% { transform: translateY(0); }
+  }
+
+  
