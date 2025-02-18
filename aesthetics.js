@@ -231,5 +231,19 @@ function initializeArrowMenu() {
   setArrowToCenter();
 }
 
-// Call the function to initialize the arrow menu behavior
-// initializeArrowMenu();
+
+let isCentered = false;
+const toggleContainer = document.querySelector('.toggle-container');
+const toggleButton = document.getElementById('red');
+
+toggleButton.addEventListener('click', () => {
+  if (isCentered) {
+    // small.style.transformOrigin = "0 0";
+    toggleButton.style.animation = 'rotateRev 3s ease-in-out forwards';
+    toggleContainer.style.animation = "springRev 1s ease-in-out forwards";
+     } else {
+    toggleButton.style.animation = 'rotate 1s cubic-bezier(0.18, 0.89, 0.29, 1.3) forwards';
+    toggleContainer.style.animation = "spring 1s cubic-bezier(0.18, 0.89, 0.29, 1.3) forwards";
+}
+  isCentered = !isCentered
+});

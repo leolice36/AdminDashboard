@@ -51,6 +51,8 @@ body .container, body .container *{
   background-color: rgba(255, 255, 255, 0); 
   position: relative;
   display: inline-block;
+  --translate-value: 1px;
+  --return-value: 0px;
 }
 .sidebar .toggle-container #red {
   position: absolute;
@@ -63,6 +65,7 @@ body .container, body .container *{
   background-position: center;
   background-size: cover;
   cursor: pointer;
+  transform-origin: 40% 50%;
 }
 
 .sidebar .toggle-container #red.dark-mode{
