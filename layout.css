@@ -49,10 +49,6 @@ body .container, body .container *{
   min-width: 26px;
   height: 100%;          
   background-color: rgba(255, 255, 255, 0); 
-  /* display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column; */
   position: relative;
   display: inline-block;
 }
@@ -98,6 +94,43 @@ body .container, body .container *{
 .menu .menu-item:hover, .menu .menu-item.active {
   background-color:#FFD30F;
 }
+
+.menu .top-menu .icons, .menu .bottom-menu .icons {
+  min-width: 24px;
+  height: 25px;
+  background-size: cover;
+  background-position: center;
+  display: inline-block;
+}
+
+.menu .top-menu #home-icon {
+  background-image: url('images/sidebar/home.svg');
+}
+.menu .top-menu #profile-icon {
+  background-image: url('images/sidebar/profile.svg');
+}
+.menu .top-menu #messages-icon {
+  background-image: url('images/sidebar/messages.svg');
+}
+.menu .top-menu #history-icon {
+  background-image: url('images/sidebar/history.svg');
+}
+.menu .top-menu #tasks-icon {
+  background-image: url('images/sidebar/tasks.svg');
+}
+.menu .top-menu #communities-icon {
+  background-image: url('images/sidebar/communities.svg');
+}
+.menu .bottom-menu #settings-icon {
+  background-image: url('images/sidebar/settings.svg');
+}
+.menu .bottom-menu #support-icon {
+  background-image: url('images/sidebar/support.svg');
+}
+.menu .bottom-menu #privacy-icon {
+  background-image: url('images/sidebar/privacy.svg');
+}
+
 
 .dynamic-content {
   flex-grow: 1;
